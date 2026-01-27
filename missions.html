@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Missions - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Hugo Léonardi</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="entreprise.html">Technicentre de Villeneuve Saint Georges</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="projets.html">Projets</a></li>
+                <li><a href="missions.html" class="active">Missions</a></li>
+                <li><a href="veille.html">Veille</a></li> 
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Mes Missions</h1>
+            <p>Activités réalisées en entreprise et à l'école</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <!-- Onglets pour séparer entreprise et école -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('entreprise')">
+                    En Entreprise
+                </button>
+                <button class="tab-button" onclick="showTab('ecole')">
+                    À l'École
+                </button>
+            </div>
+
+            <!-- Missions en entreprise -->
+            <div id="entreprise" class="tab-content active">
+                <div class="missions-intro">
+                    <h2>Missions réalisées en entreprise</h2>
+                    <p>
+                        Voici un récapitulatif des principales activités que j'ai pu 
+                        réaliser durant mon alternance.
+                    </p>
+                </div>
+
+                <div class="mission-category">
+                    <h3>🖥️ Administration Systèmes</h3>
+                    <div class="mission-list">
+                        
+                        <div class="mission-item">
+                            <h4>Mise en place d'un serveur Windows 2025</h4>
+                            <p><strong>Contexte :</strong> Renouvelement de l'infrastructure serveur</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Installation et mise en place de la politique de sécurité de la e.SNCF</li>
+                                <li>Création d'un RAID</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Mise en place d'un serveur Web</h4>
+                            <p><strong>Contexte :</strong> Mise en place d'un serveur Web avec Apache, PHP et mysql</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Installation de Apache, différentes version de PHP et une base de donée mysql</li>
+                                <li>Configuration et optimisation du serveur Web pour éviter les problème de performance et de sécurité</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                                <span class="tag-small">Apache</span>
+                                <span class="tag-small">PHP</span>
+                                <span class="tag-small">MySQL</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Migration et mise à jour du service GLPI</h4>
+                            <p><strong>Contexte :</strong> Renouvellement du service GLPI qui n'était plus à jour. Ajout de plugin pour améliorer l'expérience utilisateur, que ce soit du côté agent qu'administrateur</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Installation et mise en place de la politique de sécurité de la e.SNCF</li>
+                                <li>Création d'un RAID</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Mise en place d'un serveur Linux Ubuntu</h4>
+                            <p><strong>Contexte :</strong> Renouvelement de l'infrastructure serveur. Futur remplaçant des serveurs Windows</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Installation et mise en place de la politique de sécurité de la e.SNCF</li>
+                                <li>Création d'un RAID</li>
+                                <li>Configuration de services réseaux (SSH, FTP, etc.)</li>
+                                <li>Gestion des utilisateurs et des permissions</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Linux Ubuntu</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Automation de tâches administratives</h4>
+                            <p><strong>Contexte :</strong> Automatisation de tâches répétitives pour améliorer l'efficacité et la qualité de vie au travail. Principalement l'extraction de donnée pour mettre à jour des PowerBI ou générer des CSV</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Script en Python pour automatiser des tâches administratives</li>
+                                <li>Requêtes SQL</li>
+                                <li>PowerBI</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-category">
+                    <h3>👥 Support Utilisateurs</h3>
+                    <div class="mission-list">
+                        <div class="mission-item">
+                            <h4>Ticketing</h4>
+                            <p><strong>Contexte :</strong> Gestion des demandes et incidents des utilisateurs via un système de ticketing (GLPI)</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Résolution d'incidents informatiques</li>
+                                <li>Assistance aux utilisateurs</li>
+                                <li>Gestion des tickets</li>
+                                <li>Formation des utilisateurs</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Support</span>
+                                <span class="tag-small">Ticketing</span>
+                                <span class="tag-small">GLPI</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Gestion de Droits NTFS</h4>
+                            <p><strong>Contexte :</strong> Accord de droit sur le serveur de fichiers interne</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Vérification des permissions existantes pour assurer leur conformité</li>
+                                <li>Gestion des groupes de sécurité pour contrôler l'accès aux dossiers partagés</li>
+                                <li>Vérification de conformité des demande de droit</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                                <span class="tag-small">Active Directory</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mission-category">
+                    <h3>💡 Gestion de projets</h3>
+                    <div class="mission-list">
+                        <div class="mission-item">
+                            <h4>Projet pôle QSE</h4>
+                            <p><strong>Contexte :</strong> Gestion d'un projet pour identifier les cas de risque SST plus facilement</p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Pilotage de Réunions</li>
+                                <li>Définition des solutions à mettre en place et suivi des avancements</li>
+                                <li>Création de Dashboards pour nos deux GLPI afin que des agents du pôle QSE puissent identifier plus facilement les cas de risque SST</li>
+
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Gestion de Projets</span>
+                                <span class="tag-small">Python</span>
+                                <span class="tag-small">GLPI</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Projet pôle QSE</h4>
+                            <p><strong>Contexte :</strong> Participation au projet de réhabilitation du système de vidéosurveillance du technicentre. Certaines caméras ne fonctionnaient plus ou ne transmettaient plus de flux vidéo. Certaines caméras n'avaient pas été installées par le prestataire initial. </p>
+                            <p><strong>Actions réalisées :</strong></p>
+                            <ul>
+                                <li>Réunions</li>
+                                <li>Collaboration avec l'équipe bâtiment pour l'installation dans des environnements spécifiques</li>
+                                <li>Collaboration avec le pôle sûreté pour assurer la conformité et la sécurité des installations</li>
+                                <li>Réparation de certaines caméras</li>
+
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Participation à un Projet</span>
+                                <span class="tag-small">Réparation de certaines caméras</span>
+                                <span class="tag-small">Formation électrique</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Missions à l'école -->
+            <div id="ecole" class="tab-content">
+                <div class="missions-intro">
+                    <h2>Activités réalisées à l'école</h2>
+                    <p>
+                        Travaux pratiques et projets réalisés dans le cadre de ma formation.
+                    </p>
+                </div>
+
+                <div class="mission-category">
+                    <h3>🔬 Travaux Pratiques</h3>
+                    <div class="mission-list">
+                        <div class="mission-item">
+                            <h4>Installation classique d'un Serveur Windows (2019)</h4>
+                            <p><strong>Objectifs pédagogiques : </strong></p>
+                            <ul>
+                                <li>Installer un OS (Windows Server 2019)</li>
+                                <li>Mettre en place un DNS, AD DS et DHCP</li>
+                                <li>Liaison d'un windows client pour tests</li>
+                            </ul>
+                            <p><strong>Technologies utilisées :</strong></p>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                                <span class="tag-small">Active Directory</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Gestion de droits NTFS</h4>
+                            <p><strong>Objectifs pédagogiques :</strong></p>
+                            <ul>
+                                <li>Création et gestion de groupes selon la politique AGDLP</li>
+                                <li>Notion de moindre privilège</li>
+                                <li>Mise en place d'un partage de fichiers</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                                <span class="tag-small">Active Directory</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Mise en place d'un serveur NFS</h4>
+                            <p><strong>Objectifs pédagogiques : Mettre en place deux serveurs NFS pour partager des fichers sur un réseau interne</strong></p>
+                            <ul>
+                                <li>Création d'un serveur de partage NFS</li>
+                                <li>Création d'un serveur redondant</li>
+                                <li>Application de droit NTFS</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                                <span class="tag-small">Active Directory</span>
+                                <span class="tag-small">NFS</span>
+                            </div>
+                        </div>
+
+                        <div class="mission-item">
+                            <h4>Mise en place de GPO</h4>
+                            <p><strong>Objectifs pédagogiques : Mettre en place des GPO pour certains employés uniquement. Mise en place de GPO pour empêcher l'accès au panneau de configuration et faire apparaitre le raccourcis de partage NFS pour le bon pôle de chaque utilisateur.</strong></p>
+                            <ul>
+                                <li>Prise en main de l'outil de gestion des stratégies de groupe (GPO)</li>
+                                <li>Interdictions des GPO pour certains utilisateurs</li>
+                                <li>Configuration des raccourcis de partage NFS spécifiques par pôle</li>
+                            </ul>
+                            <div class="mission-tags">
+                                <span class="tag-small">Windows Server</span>
+                                <span class="tag-small">Active Directory</span>
+                                <span class="tag-small">GPO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-category">
+                    <h3>📚 Projets Scolaires</h3>
+                    <div class="mission-list">
+                        <div class="mission-item">
+                            <h4>[Projet 1 - Ex: Déploiement d'une solution de virtualisation]</h4>
+                            <p><strong>Description :</strong> [Contexte du projet]</p>
+                            <p><strong>Compétences développées :</strong></p>
+                            <ul>
+                                <li>[Compétence 1]</li>
+                                <li>[Compétence 2]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-category">
+                    <h3>🏆 Certifications et Formations</h3>
+                    <div class="mission-list">
+                        <div class="mission-item">
+                            <h4>Formations suivies</h4>
+                            <ul>
+                                <li>Formation Udemy - Administration DevOps</li>
+                                <li>A venir...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 - Hugo Léonardi - Portfolio BTS SIO SISR</p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Cacher tous les contenus
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Désactiver tous les boutons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Afficher le contenu sélectionné
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
