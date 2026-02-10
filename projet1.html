@@ -244,7 +244,7 @@
                 <!-- Étape 2 -->
                 <h4>2. Script d'installation automatique (install_glpi.sh)</h4>
                 <p class="text-block">
-                    Ce script est exécuté par AWS au premier démarrage. Il installe la stack LAMP et configure la base de données sans intervention humaine.
+                    Ce script est exécuté par AWS au premier démarrage. Il installe la stack LAMP et configure la base de données sans intervention humaine. Il créé le fichier de configuration Apache pour GLPI et redémarre le service.
                 </p>
                 <div class="code-example">
                     <pre><code>#!/bin/bash
