@@ -147,7 +147,7 @@
                         </div>
                         <p class="text-block">
                             <strong>Justification du choix :</strong> 
-                            L'approche IaC correspond aux standards actuels du DevOps et du métier SISR. Elle garantit que le serveur GLPI sera toujours installé avec la même configuration validée.
+                            L'approche IaC correspond aux standards actuels du DevOps et des services informatiques en général. Elle garantit que le serveur GLPI sera toujours installé avec la même configuration validée.
                         </p>
                     </div>
                 </div>
@@ -400,12 +400,12 @@ systemctl reload apache2
                 <h3>Difficultés rencontrées et solutions</h3>
                 <div class="difficulties">
                     <div class="difficulty-item">
-                        <h4>❗ Difficulté : Versions AMI Ubuntu</h4>
+                        <h4>Difficulté : Versions AMI Ubuntu</h4>
                         <p><strong>Problème :</strong> Le code Terraform ne trouvait pas l'image Ubuntu 24.04 à cause d'un changement de nommage sur AWS.</p>
                         <p><strong>Solution :</strong> Passage à la version 22.04 LTS (plus stable pour GLPI) et ajustement des filtres de recherche Terraform.</p>
                     </div>
                     <div class="difficulty-item">
-                        <h4>❗ Difficulté : Type d'instance AWS</h4>
+                        <h4>Difficulté : Type d'instance AWS</h4>
                         <p><strong>Problème :</strong> L'instance `t2.micro` n'était plus disponible dans l'offre gratuite dans ma région.</p>
                         <p><strong>Solution :</strong> Modification du code Terraform pour utiliser `t3.micro`.</p>
                     </div>
