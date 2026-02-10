@@ -1,9 +1,22 @@
+C'est une excellente initiative. Pour ton BTS SIO, ton portfolio doit refléter la montée en compétences. Passer d'une installation manuelle (le HTML actuel) à une installation automatisée Cloud (ce que nous venons de faire) est une énorme plus-value.
+
+Voici le code HTML complet mis à jour. J'ai remplacé tout le contenu textuel pour qu'il corresponde exactement à tes scripts Terraform et Bash, tout en gardant la structure de ta page.
+
+**Modifications apportées :**
+1.  **Contexte :** Passage d'une infra locale à une infra **Cloud AWS**.
+2.  **Solution :** Remplacement de "Windows vs Linux" par "Console AWS (Manuel) vs Terraform (Automatisé)".
+3.  **Réalisation :** J'ai intégré tes vrais bouts de code (`main.tf`, `install_glpi.sh`) et décrit la logique Terraform.
+4.  **Compétences :** Ajout de **Terraform**, **AWS**, **Bash Scripting**.
+
+Copie-colle ce code à la place de ton fichier actuel :
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet 1 - Serveur Web et GLPI</title>
+    <title>Projet 1 - Déploiement Automatisé GLPI sur AWS</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,8 +44,8 @@
     <section class="project-detail-header">
         <div class="container">
             <div class="project-badge-large">Projet 1</div>
-            <h1>Serveur Web et GLPI</h1>
-            <p class="project-subtitle"></p>
+            <h1>Déploiement Automatisé GLPI sur AWS</h1>
+            <p class="project-subtitle">Infrastructure as Code (IaC) avec Terraform</p>
             <a href="docs/Compte_rendu_Projet1.pdf" target="_blank" class="btn btn-primary">📄 Télécharger le PDF</a>
         </div>
     </section>
@@ -46,7 +59,7 @@
                 <div class="info-grid">
                     <div class="info-item">
                         <strong>Période</strong>
-                        <p>Novembre 2025</p>
+                        <p>Février 2026</p>
                     </div>
                     <div class="info-item">
                         <strong>Durée</strong>
@@ -54,11 +67,11 @@
                     </div>
                     <div class="info-item">
                         <strong>Contexte</strong>
-                        <p>Formation BTS SIO option SISR</p>
+                        <p>Migration vers le Cloud (AWS)</p>
                     </div>
                     <div class="info-item">
                         <strong>Rôle</strong>
-                        <p>Administrateur systèmes</p>
+                        <p>Ingénieur Cloud Junior</p>
                     </div>
                 </div>
             </div>
@@ -69,13 +82,12 @@
                 
                 <h3>Situation initiale</h3>
                 <p class="text-block">
-                    Je dois mettre en place un outil de ticketing pour la gestion des incidents/demandes informatiques au sein de mon domaine.
+                    L'entreprise souhaite moderniser son infrastructure de gestion de parc (GLPI). L'infrastructure actuelle sur site manque de flexibilité et l'installation manuelle des serveurs prend trop de temps et est sujette aux erreurs humaines.
                 </p>
 
                 <h3>Problématique identifiée</h3>
                 <p class="text-block">
-                    Mise en place d'un serveur web sous Linux pour héberger des applications web, dont mon GLPI et ce portfolio.
-                    Lier GLPI à mon service AD pour que les utilisateurs puissent se connecter avec leurs identifiants habituels.
+                    Comment déployer une infrastructure GLPI fiable, reproductible et sécurisée sur le Cloud public (AWS) en moins de 10 minutes, sans intervention manuelle ?
                 </p>
             </div>
 
@@ -85,18 +97,18 @@
                 <div class="objectives-grid">
                     <div class="objective-item">
                         <div class="objective-number">1</div>
-                        <h4>Mettre en place un serveur web sous Linux</h4>
-                        <p>Installer et configurer un serveur web Apache sur un serveurpour héberger des applications web.</p>
+                        <h4>Automatisation (IaC)</h4>
+                        <p>Utiliser Terraform pour provisionner les ressources AWS (Instances EC2, Sécurité, Réseau) par le code.</p>
                     </div>
                     <div class="objective-item">
                         <div class="objective-number">2</div>
-                        <h4>Deployer GLPI sur le serveur</h4>
-                        <p>Installer et configurer GLPI pour la gestion des incidents et des demandes informatiques.</p>
+                        <h4>Installation logicielle automatique</h4>
+                        <p>Utiliser des scripts `User Data` (Bash) pour installer la pile LAMP et GLPI dès le premier démarrage du serveur.</p>
                     </div>
                     <div class="objective-item">
                         <div class="objective-number">3</div>
-                        <h4>Liaison LDAP</h4>
-                        <p>Configurer la liaison entre GLPI et le service Active Directory pour permettre l'authentification des utilisateurs avec leurs identifiants habituels.</p>
+                        <h4>Sécurité Cloud</h4>
+                        <p>Configurer les Security Groups et les rôles IAM pour respecter le principe de moindre privilège.</p>
                     </div>
                 </div>
             </div>
@@ -105,329 +117,222 @@
             <div class="content-card">
                 <h2>🔍 Analyse et Conception</h2>
                 
-                <h3>Étude de l'existant</h3>
-                <p class="text-block">
-                    J'ai une infrastructure Proxmox VE avec un Pfsense en gise de bridge réseau.
-                </p>
-
                 <h3>Solutions envisagées</h3>
                 <div class="solutions-comparison">
                     <div class="solution-card">
-                        <h4>Solution 1 : Serveur web sous Windows/h4>
+                        <h4>Solution 1 : Déploiement Manuel (Console AWS)</h4>
                         <div class="pros-cons">
                             <div class="pros">
                                 <strong>✅ Avantages :</strong>
                                 <ul>
-                                    <li>Possibilité de déployer le serveur sur une machine virtuelle directement sur mon serveur AD</li>
-                                    <li>Liaison directe</li>
+                                    <li>Interface graphique intuitive pour débuter.</li>
+                                    <li>Pas de code à apprendre.</li>
                                 </ul>
                             </div>
                             <div class="cons">
                                 <strong>❌ Inconvénients :</strong>
                                 <ul>
-                                    <li>Consommation de bande passante et de ressource accrue</li>
-                                    <li>Environnement Windows peu adaptée pour l'hébergement d'applications web</li>
+                                    <li>Non reproductible (clics non enregistrés).</li>
+                                    <li>Risque d'oubli d'une étape de sécurité.</li>
+                                    <li>Lent à répliquer pour plusieurs environnements (Test/Prod).</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="solution-card selected">
                         <div class="solution-badge">✓ Retenue</div>
-                        <h4>Solution 2 : Serveur Web sous Linux</h4>
+                        <h4>Solution 2 : Infrastructure as Code (Terraform)</h4>
                         <div class="pros-cons">
                             <div class="pros">
                                 <strong>✅ Avantages :</strong>
                                 <ul>
-                                    <li>Meilleure performance et stabilité pour l'hébergement web</li>
-                                    <li>Séparation des services pour une meilleure sécurité et stabilité</li>
+                                    <li>Déploiement ultra-rapide et identique à chaque lancement.</li>
+                                    <li>Versionning du code (Git).</li>
+                                    <li>Documentation technique auto-générée par le code.</li>
                                 </ul>
                             </div>
                             <div class="cons">
                                 <strong>❌ Inconvénients :</strong>
                                 <ul>
-                                    <li>Difficiles à trouver ^^</li>
+                                    <li>Courbe d'apprentissage plus élevée (HCL).</li>
                                 </ul>
                             </div>
                         </div>
                         <p class="text-block">
                             <strong>Justification du choix :</strong> 
-                            Le déployement d'application web se fait principalement sous environnement Linux, offrant une meilleure performance et stabilité. De plus, séparer le serveur web du serveur AD améliore la sécurité et la gestion des ressources.
+                            L'approche IaC correspond aux standards actuels du DevOps et du métier SISR. Elle garantit que le serveur GLPI sera toujours installé avec la même configuration validée.
                         </p>
                     </div>
                 </div>
 
                 <h3>Architecture technique cible</h3>
                 <p class="text-block">
+                    L'architecture repose sur une instance AWS EC2 (T3.micro) sous Ubuntu 22.04 LTS. Elle est protégée par un Security Group strict (Ports 80 et 22) et s'autoconfigure via cloud-init.
                 </p>
                 <!-- Si vous avez un schéma : -->
-                <img src="images/GPT image-2025-11-18-12_05_11.png" alt="Schéma architecture" class="schema-img">
+                <!-- <img src="images/architecture_aws.png" alt="Schéma architecture AWS" class="schema-img"> -->
             </div>
 
             <!-- Réalisation -->
-<!-- Réalisation -->
-<div class="content-card">
-    <h2>⚙️ Réalisation</h2>
-
-    <h3>Méthodologie</h3>
-    <p class="text-block">
-        Pour ce projet, j’ai suivi une méthodologie linéaire en 3 phases : installation du serveur web,
-        déploiement de GLPI et sécurisation/optimisation. Chaque étape a été documentée et validée afin
-        de garantir un service fonctionnel, sécurisé et conforme aux bonnes pratiques SISR.
-    </p>
-
-    <div class="timeline-phases">
-        
-        <!-- Phase 1 -->
-        <div class="phase-item">
-            <div class="phase-header">
-                <span class="phase-number">Phase 1</span>
-                <span class="phase-duration">30 minutes</span>
-            </div>
-            <h4>Installation du serveur web</h4>
-            <ul>
-                <li>Installation du système : Debian 12 / Ubuntu 24</li>
-                <li>Configuration des utilisateurs Root et Technicien</li>
-                <li>Liaison éventuelle au domaine Active Directory</li>
-                <li>Installation du serveur web Apache2</li>
-                <li>Mise en place de MariaDB (base de données)</li>
-                <li>Installation et configuration de PHP 8.3 + modules nécessaires</li>
-            </ul>
-        </div>
-
-        <!-- Phase 2 -->
-        <div class="phase-item">
-            <div class="phase-header">
-                <span class="phase-number">Phase 2</span>
-                <span class="phase-duration">1 heure</span>
-            </div>
-            <h4>Déploiement de GLPI</h4>
-            <ul>
-                <li>Création de la base SQL et de l'utilisateur dédié</li>
-                <li>Installation de GLPI dans /var/www/glpi</li>
-                <li>Configuration du VirtualHost Apache</li>
-                <li>Configuration PHP‑FPM pour exécuter GLPI</li>
-                <li>Liaison LDAP pour l’authentification</li>
-            </ul>
-        </div>
-
-        <!-- Phase 3 -->
-        <div class="phase-item">
-            <div class="phase-header">
-                <span class="phase-number">Phase 3</span>
-                <span class="phase-duration">30 minutes</span>
-            </div>
-            <h4>Sécurisation et optimisation</h4>
-            <ul>
-                <li>Suppression du dossier /install de GLPI</li>
-                <li>Configuration du firewall UFW</li>
-                <li>Désactivation des signatures Apache</li>
-                <li>Droits et permissions sur /var/www/glpi</li>
-            </ul>
-        </div>
-    </div>
-
-    <h3>Mise en œuvre technique</h3>
-    <p class="text-block">
-        La mise en œuvre technique s’est déroulée en plusieurs étapes : installation du serveur,
-        configuration du socle LAMP (Apache, MariaDB, PHP 8.3), installation de GLPI, création de la base
-        de données, configuration Apache, puis sécurisation du service.
-    </p>
-
-    <!-- Étape 1 -->
-    <h4>Étape 1 : Installation du socle serveur</h4>
-    <p class="text-block">
-        Mise à jour du système et installation des services nécessaires à l’hébergement de GLPI.
-    </p>
-    <div class="code-example">
-        <pre><code>sudo apt update && sudo apt upgrade -y
-sudo apt install apache2 mariadb-server mariadb-client -y
-sudo apt install php8.3 php8.3-{fpm,gd,xml,mbstring,curl,zip,mysql,intl} -y</code></pre>
-    </div>
-
-    <!-- Étape 2 -->
-    <h4>Étape 2 : Configuration de la base de données</h4>
-    <p class="text-block">
-        Création de la base GLPI et de l’utilisateur dédié, avec un accès sécurisé.
-    </p>
-    <div class="code-example">
-        <pre><code>sudo mysql -u root -p
-CREATE DATABASE glpi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'glpiuser'@'localhost' IDENTIFIED BY 'motdepasse_sécurisé_biensur...';
-GRANT ALL PRIVILEGES ON glpi.* TO 'glpiuser'@'localhost';
-FLUSH PRIVILEGES;</code></pre>
-    </div>
-
-    <!-- Étape 3 -->
-    <h4>Étape 3 : Déploiement de GLPI et configuration Apache</h4>
-    <p class="text-block">
-        Téléchargement, décompression et configuration du VirtualHost pour rendre GLPI accessible via Apache.
-    </p>
-    <div class="code-example">
-        <pre><code># Téléchargement et installation
-cd /tmp
-wget https://github.com/glpi-project/glpi/releases/latest/download/glpi.tgz
-tar xvf glpi.tgz
-sudo mv glpi /var/www/
-sudo chown -R www-data:www-data /var/www/glpi
-
-# Activation PHP-FPM pour Apache
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php8.3-fpm
-sudo systemctl reload apache2</code></pre>
-    </div>
-
-    <!-- Étape 4 -->
-<h4>Étape 4 : Permissions et droits d’accès</h4>
-<p class="text-block">
-    Après l’installation de GLPI, il est essentiel d’attribuer les bons droits aux dossiers afin
-    de garantir le bon fonctionnement de l’application. L’utilisateur <strong>www-data</strong> (Apache) doit
-    être propriétaire des fichiers pour pouvoir lire et écrire correctement.
-</p>
-
-<div class="code-example">
-    <pre><code># Propriétaire Apache
-sudo chown -R www-data:www-data /var/www/glpi
-
-# Permissions standard : dossiers 755, fichiers 644
-sudo find /var/www/glpi -type d -exec chmod 755 {} \;
-sudo find /var/www/glpi -type f -exec chmod 644 {} \;
-
-# Dossiers nécessaires en écriture
-sudo chmod -R 775 /var/www/glpi/files/
-sudo chmod -R 775 /var/www/glpi/config/
-sudo chmod -R 775 /var/www/glpi/marketplace/
-sudo chmod -R 775 /var/www/glpi/plugins/
-
-# Vérification
-ls -al /var/www/glpi
-</code></pre>
-
-</div>
-
-    <!-- Étape 5 -->
-    <h4>Étape 5 : Liaison LDAP avec Active Directory</h4>
-    <p class="text-block">
-        Pour permettre aux utilisateurs de se connecter à GLPI avec leurs identifiants AD,
-        l’installation du module LDAP pour PHP est nécessaire.
-    </p>
-    <div class="code-example">
-        <pre><code>sudo apt install php8.3-ldap -y
-sudo systemctl restart apache2</code></pre>
-    </div>
-
-
-    <h3>Technologies utilisées</h3>
-    <div class="tech-stack">
-        
-        <div class="tech-item">
-            <h4>Apache2</h4>
-            <p>Serveur web utilisé pour héberger l'application GLPI.</p>
-            <span class="tech-version">Version : 2.4.x</span>
-        </div>
-
-        <div class="tech-item">
-            <h4>PHP 8.3</h4>
-            <p>Moteur d'exécution nécessaire au fonctionnement de GLPI.</p>
-            <span class="tech-version">Version : 8.3</span>
-        </div>
-
-        <div class="tech-item">
-            <h4>MariaDB</h4>
-            <p>Système de gestion de base de données stockant l'ensemble des données GLPI.</p>
-            <span class="tech-version">Version : 12.x</span>
-        </div>
-
-        <div class="tech-item">
-            <h4>GLPI</h4>
-            <p>Solution ITSM/Helpdesk utilisée pour la gestion du parc informatique.</p>
-            <span class="tech-version">Version : 10.x</span>
-        </div>
-
-    </div>
-</div>
-
-<!-- Tests et validation -->
-<!--
             <div class="content-card">
-                <h2>✅ Tests et Validation</h2>
-                
-                <h3>Plan de tests</h3>
+                <h2>⚙️ Réalisation</h2>
+
+                <h3>Méthodologie DevOps</h3>
                 <p class="text-block">
-                    [Décrivez la stratégie de tests mise en place]
+                    Le projet a été découpé en écriture de code infrastructure (HCL), écriture du script de provisionning (Bash) et déploiement.
                 </p>
 
-                <div class="tests-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Test</th>
-                                <th>Objectif</th>
-                                <th>Résultat</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>[Nom du test 1]</td>
-                                <td>[Objectif du test]</td>
-                                <td class="success">✓ Validé</td>
-                            </tr>
-                            <tr>
-                                <td>[Nom du test 2]</td>
-                                <td>[Objectif du test]</td>
-                                <td class="success">✓ Validé</td>
-                            </tr>
-                            <tr>
-                                <td>[Nom du test 3]</td>
-                                <td>[Objectif du test]</td>
-                                <td class="success">✓ Validé</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <div class="timeline-phases">
+                    
+                    <!-- Phase 1 -->
+                    <div class="phase-item">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 1</span>
+                            <span class="phase-duration">Infrastructure</span>
+                        </div>
+                        <h4>Codage Terraform</h4>
+                        <ul>
+                            <li>Définition du Provider AWS (Region us-east-1).</li>
+                            <li>Recherche dynamique de l'AMI Ubuntu 22.04 LTS.</li>
+                            <li>Configuration du Security Group (Firewall Cloud).</li>
+                            <li>Définition de l'instance EC2 T3.micro.</li>
+                        </ul>
+                    </div>
 
-                <h3>Mise en production</h3>
-                <p class="text-block">
-                    [Décrivez comment s'est passée la mise en production, la bascule, etc.]
-                </p>
-            </div>
-        -->
+                    <!-- Phase 2 -->
+                    <div class="phase-item">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 2</span>
+                            <span class="phase-duration">Scripting</span>
+                        </div>
+                        <h4>Automatisation Bash</h4>
+                        <ul>
+                            <li>Rédaction du script `install_glpi.sh`.</li>
+                            <li>Automatisation de l'installation LAMP (Linux Apache MariaDB PHP).</li>
+                            <li>Création silencieuse de la base de données SQL.</li>
+                            <li>Téléchargement et configuration des droits GLPI.</li>
+                        </ul>
+                    </div>
 
-            <!-- Résultats -->
-        <!--    <div class="content-card">
-                <h2>📊 Résultats et Bilan</h2>
-                
-                <h3>Résultats obtenus</h3>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <div class="result-icon">📈</div>
-                        <h4>Performance</h4>
-                        <p>[Amélioration constatée]</p>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-icon">🔒</div>
-                        <h4>Sécurité</h4>
-                        <p>[Amélioration constatée]</p>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-icon">💰</div>
-                        <h4>Coûts</h4>
-                        <p>[Impact financier]</p>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-icon">👥</div>
-                        <h4>Utilisateurs</h4>
-                        <p>[Satisfaction, retours]</p>
+                    <!-- Phase 3 -->
+                    <div class="phase-item">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 3</span>
+                            <span class="phase-duration">Déploiement</span>
+                        </div>
+                        <h4>Terraform Apply</h4>
+                        <ul>
+                            <li>Initialisation (`terraform init`).</li>
+                            <li>Planification (`terraform plan`).</li>
+                            <li>Application et récupération de l'IP (`terraform apply`).</li>
+                        </ul>
                     </div>
                 </div>
 
-                <h3>Bénéfices pour l'entreprise</h3>
-                <ul class="benefits-list">
-                    <li>[Bénéfice 1 quantifié si possible]</li>
-                    <li>[Bénéfice 2 quantifié si possible]</li>
-                    <li>[Bénéfice 3 quantifié si possible]</li>
-                </ul>
+                <h3>Mise en œuvre technique (Extraits de code)</h3>
+                
+                <!-- Étape 1 -->
+                <h4>1. Définition de l'instance (main.tf)</h4>
+                <p class="text-block">
+                    Utilisation d'une instance T3.micro (éligible Free Tier) et injection du script via `user_data`.
+                </p>
+                <div class="code-example">
+                    <pre><code>resource "aws_instance" "srv_glpi" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro" # Optimisé pour le Cloud AWS actuel
+  key_name      = "glpikey" 
+
+  vpc_security_group_ids = [aws_security_group.glpi_sg.id]
+
+  # Injection du script d'installation automatique
+  user_data = file("install_glpi.sh")
+
+  tags = {
+    Name = "GLPI-Server-BTS"
+    Project = "BTS-SIO-BLOC-6"
+  }
+}</code></pre>
+                </div>
+
+                <!-- Étape 2 -->
+                <h4>2. Script d'installation automatique (install_glpi.sh)</h4>
+                <p class="text-block">
+                    Ce script est exécuté par AWS au premier démarrage. Il installe la stack LAMP et configure la base de données sans intervention humaine.
+                </p>
+                <div class="code-example">
+                    <pre><code>#!/bin/bash
+# Installation des paquets
+apt-get update -y && apt-get upgrade -y
+apt-get install -y apache2 mariadb-server php libapache2-mod-php php-mysql ...
+
+# Configuration automatique de la BDD
+systemctl start mariadb
+mysql -e "CREATE DATABASE glpidb;"
+mysql -e "CREATE USER 'glpi_user'@'localhost' IDENTIFIED BY 'admin123';"
+mysql -e "GRANT ALL PRIVILEGES ON glpidb.* TO 'glpi_user'@'localhost';"
+
+# Téléchargement GLPI
+cd /tmp
+wget https://github.com/glpi-project/glpi/releases/download/10.0.15/glpi-10.0.15.tgz
+tar -xzvf glpi-10.0.15.tgz -C /var/www/
+</code></pre>
+                </div>
+
+                <!-- Étape 3 -->
+                <h4>3. Sécurité réseau (network_security.tf)</h4>
+                <p class="text-block">
+                    Configuration du pare-feu AWS (Security Group) pour n'autoriser que le strict nécessaire.
+                </p>
+                <div class="code-example">
+                    <pre><code>resource "aws_security_group" "glpi_sg" {
+  name = "glpi-security-group"
+  
+  ingress { # HTTP pour l'accès web
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress { # SSH pour l'administration
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}</code></pre>
+                </div>
+
+                <h3>Technologies utilisées</h3>
+                <div class="tech-stack">
+                    
+                    <div class="tech-item">
+                        <h4>Terraform</h4>
+                        <p>Outil d'Infrastructure as Code pour le provisionning.</p>
+                        <span class="tech-version">Version : 1.9.x</span>
+                    </div>
+
+                    <div class="tech-item">
+                        <h4>AWS EC2</h4>
+                        <p>Infrastructure Cloud Computing.</p>
+                        <span class="tech-version">Type : T3.micro</span>
+                    </div>
+
+                    <div class="tech-item">
+                        <h4>Ubuntu Server</h4>
+                        <p>Système d'exploitation stable (LTS).</p>
+                        <span class="tech-version">Version : 22.04 Jammy</span>
+                    </div>
+
+                    <div class="tech-item">
+                        <h4>Bash</h4>
+                        <p>Scripting pour l'automatisation post-démarrage.</p>
+                        <span class="tech-version">User Data</span>
+                    </div>
+
+                </div>
             </div>
-        -->
+
             <!-- Compétences et difficultés -->
             <div class="content-card">
                 <h2>💡 Compétences Développées et Difficultés</h2>
@@ -435,59 +340,48 @@ sudo systemctl restart apache2</code></pre>
                 <h3>Compétences techniques acquises</h3>
                 <div class="competences-detail">
                     <div class="competence-item">
-                        <strong>Linux</strong>
-                        <p>Gestion de paquet, droits et permissions, commande de base</p>
+                        <strong>Infrastructure as Code</strong>
+                        <p>Maîtrise de la syntaxe Terraform et des ressources AWS.</p>
                     </div>
                     <div class="competence-item">
-                        <strong>GLPI</strong>
-                        <p>Installation, configuration, gestion des tickets</p>
+                        <strong>Cloud Computing</strong>
+                        <p>Gestion des instances EC2, Security Groups et IAM.</p>
                     </div>
                     <div class="competence-item">
-                        <strong>Serveur WEB</strong>
-                        <p>Configuration et gestion d'un serveur web</p>
+                        <strong>Automatisation Système</strong>
+                        <p>Scripting avancé pour le déploiement applicatif (Cloud-init).</p>
                     </div>
                 </div>
-<!--
-                <h3>Compétences transversales</h3>
-                <ul class="transversal-skills">
-                    <li><strong>Gestion de projet :</strong> [Ce que vous avez appris]</li>
-                    <li><strong>Communication :</strong> [Ce que vous avez appris]</li>
-                    <li><strong>Documentation :</strong> [Ce que vous avez appris]</li>
-                    <li><strong>Travail en équipe :</strong> [Ce que vous avez appris]</li>
-                </ul>
--->
-<!--
+
                 <h3>Difficultés rencontrées et solutions</h3>
                 <div class="difficulties">
                     <div class="difficulty-item">
-                        <h4>❗ Difficulté 1 : [Titre]</h4>
-                        <p><strong>Problème :</strong> [Description du problème]</p>
-                        <p><strong>Solution :</strong> [Comment vous l'avez résolu]</p>
-                        <p><strong>Apprentissage :</strong> [Ce que cela vous a appris]</p>
+                        <h4>❗ Difficulté : Versions AMI Ubuntu</h4>
+                        <p><strong>Problème :</strong> Le code Terraform ne trouvait pas l'image Ubuntu 24.04 à cause d'un changement de nommage sur AWS.</p>
+                        <p><strong>Solution :</strong> Passage à la version 22.04 LTS (plus stable pour GLPI) et ajustement des filtres de recherche Terraform.</p>
                     </div>
                     <div class="difficulty-item">
-                        <h4>❗ Difficulté 2 : [Titre]</h4>
-                        <p><strong>Problème :</strong> [Description du problème]</p>
-                        <p><strong>Solution :</strong> [Comment vous l'avez résolu]</p>
-                        <p><strong>Apprentissage :</strong> [Ce que cela vous a appris]</p>
+                        <h4>❗ Difficulté : Type d'instance AWS</h4>
+                        <p><strong>Problème :</strong> L'instance `t2.micro` n'était plus disponible dans l'offre gratuite dans ma région.</p>
+                        <p><strong>Solution :</strong> Modification du code Terraform pour utiliser `t3.micro`.</p>
                     </div>
                 </div>
             </div>
--->
+
             <!-- Améliorations possibles -->
             <div class="content-card">
                 <h2>🚀 Perspectives et Améliorations</h2>
                 
                 <h3>Évolutions possibles</h3>
                 <ul>
-                    <li>Mise en place du serveur dans un environnement de production (Cloud ?)</li>
-                    <li>Conteneurisation</li>
-                    <li>Optimisation des performances (Base de données, cache, etc.)</li>
+                    <li>Séparer la base de données sur un service managé (AWS RDS) pour la redondance.</li>
+                    <li>Mettre en place un Load Balancer (ALB) et l'HTTPS.</li>
+                    <li>Stocker l'état Terraform (tfstate) dans un bucket S3 pour le travail en équipe.</li>
                 </ul>
 
                 <h3>Ce que je referais différemment</h3>
                 <p class="text-block">
-                    ...
+                    J'utiliserais Ansible en complément de Terraform. Terraform créerait le serveur, et Ansible se chargerait de la configuration fine de GLPI, ce qui est plus flexible qu'un script Bash unique.
                 </p>
             </div>
 
@@ -507,3 +401,4 @@ sudo systemctl restart apache2</code></pre>
     </footer>
 </body>
 </html>
+```
