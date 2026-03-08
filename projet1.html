@@ -125,165 +125,156 @@
             <!-- Choix de la solution -->
             <div class="content-card">
                 <h2>🔍 Choix de la Solution</h2>
-
                 <h3>Solutions envisagées</h3>
 
-                <div class="solution-comparison">
-                    <div class="solution-card">
-                        <h4>Solution 1 : Serveur physique on-premise</h4>
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <strong>✅ Avantages :</strong>
-                                <ul>
-                                    <li>Contrôle total du matériel.</li>
-                                    <li>Pas de coût d'abonnement Cloud.</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <strong>❌ Inconvénients :</strong>
-                                <ul>
-                                    <li>Coût matériel initial élevé.</li>
-                                    <li>Maintenance physique nécessaire.</li>
-                                    <li>Pas de redondance native.</li>
-                                    <li>Déploiement manuel et non reproductible.</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="competences-grid">
+
+                    <div class="competence-card">
+                        <h4>❌ Solution 1 — Serveur physique on-premise</h4>
+                        <ul>
+                            <li>Contrôle total du matériel</li>
+                            <li>Pas de coût d'abonnement Cloud</li>
+                            <li style="color:#ef4444">Coût matériel initial élevé</li>
+                            <li style="color:#ef4444">Maintenance physique nécessaire</li>
+                            <li style="color:#ef4444">Pas de redondance native</li>
+                            <li style="color:#ef4444">Déploiement manuel, non reproductible</li>
+                        </ul>
                     </div>
 
-                    <div class="solution-card solution-selected">
-                        <div class="solution-badge">✓ Retenue</div>
-                        <h4>Solution 2 : Infrastructure as Code sur AWS (Terraform)</h4>
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <strong>✅ Avantages :</strong>
-                                <ul>
-                                    <li>Déploiement ultra-rapide et identique à chaque lancement.</li>
-                                    <li>Versionning du code infrastructure (Git).</li>
-                                    <li>Services managés AWS (RDS) : sauvegardes et patches automatiques.</li>
-                                    <li>Stockage S3 découplé de l'instance EC2 : les fichiers survivent à la recréation du serveur.</li>
-                                    <li>Correspond aux standards actuels du marché (DevOps, Cloud).</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <strong>❌ Inconvénients :</strong>
-                                <ul>
-                                    <li>Courbe d'apprentissage (HCL, concepts AWS).</li>
-                                    <li>Coût AWS à surveiller.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p class="text-block">
-                            <strong>Justification du choix :</strong>
-                            L'approche IaC garantit que l'infrastructure est toujours déployée
-                            avec la même configuration validée. Elle correspond aux pratiques
-                            DevOps actuelles et permet une reprise rapide en cas d'incident.
-                        </p>
+                    <div class="competence-card">
+                        <h4>⚠️ Solution 2 — Cloud manuel (Console AWS)</h4>
+                        <ul>
+                            <li>Accès à l'infrastructure AWS</li>
+                            <li>Pas d'outillage IaC requis</li>
+                            <li style="color:#ef4444">Déploiement non reproductible</li>
+                            <li style="color:#ef4444">Risque d'erreur humaine élevé</li>
+                            <li style="color:#ef4444">Impossible à versionner</li>
+                            <li style="color:#ef4444">Difficile à maintenir en équipe</li>
+                        </ul>
                     </div>
+
+                    <div class="competence-card" style="border-top-color: var(--success-color)">
+                        <h4>✅ Solution retenue — Terraform + AWS</h4>
+                        <ul>
+                            <li>Infrastructure 100% reproductible</li>
+                            <li>Versionnée avec Git</li>
+                            <li>Déploiement en une seule commande</li>
+                            <li>Conforme aux pratiques DevOps</li>
+                            <li>Reprise rapide en cas d'incident</li>
+                            <li>Séparation claire des couches (réseau, BDD, stockage)</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="competence-card" style="margin-top: 1.5rem; border-top-color: var(--primary-color)">
+                    <h4>💡 Justification du choix</h4>
+                    <p style="color: var(--text-light)">
+                        L'approche IaC garantit que l'infrastructure est toujours déployée avec la même 
+                        configuration validée. Elle correspond aux pratiques DevOps actuelles et permet 
+                        une reprise rapide en cas d'incident. Terraform permet de décrire l'infrastructure 
+                        comme du code, de la versionner sur Git et de la redéployer à l'identique en 
+                        une seule commande : <code>terraform apply</code>.
+                    </p>
                 </div>
             </div>
+
 
             <!-- Architecture technique -->
             <div class="content-card">
                 <h2>🏗️ Architecture Technique</h2>
 
-                <h3>Vue d'ensemble</h3>
                 <p class="text-block">
-                    L'infrastructure repose sur une architecture <strong>trois tiers</strong> déployée dans
-                    un VPC (Virtual Private Cloud) dédié sur la région AWS <strong>eu-west-3 (Paris)</strong>.
-                    Ce VPC isole complètement notre infrastructure du reste d'AWS et d'Internet,
-                    sauf pour les flux explicitement autorisés par les Security Groups.
+                    L'infrastructure repose sur une <strong>architecture trois tiers</strong> déployée 
+                    dans un VPC dédié, avec une séparation stricte des couches réseau, applicative, 
+                    base de données et stockage.
                 </p>
 
-                <!-- Emplacement schéma architecture -->
+                <!-- Schéma -->
                 <div class="schema-container">
-                    <img src="images/architecture_nextcloud.png" alt="Schéma architecture Nextcloud AWS" class="schema-img">
-                    <p class="schema-caption">Schéma de l'architecture trois tiers déployée sur AWS (VPC, EC2, RDS, S3)</p>
+                    <img src="images/architecture_nextcloud.png" alt="Schéma architecture AWS Nextcloud" class="schema-img">
+                    <p class="schema-caption">Architecture trois tiers — VPC AWS avec EC2, RDS MySQL et S3</p>
                 </div>
 
-                <h3>Couche réseau — VPC et sous-réseaux</h3>
-                <p class="text-block">
-                    Le VPC (10.0.0.0/16) est découpé en <strong>trois sous-réseaux</strong> aux rôles bien distincts :
-                </p>
-                <ul>
-                    <li>
-                        <strong>Sous-réseau public (10.0.1.0/24)</strong> : contient l'instance EC2 qui héberge Nextcloud.
-                        Elle est la seule ressource exposée à Internet, uniquement sur les ports 80 (HTTP) et 22 (SSH).
-                        Un Internet Gateway permet les flux entrants et sortants.
-                    </li>
-                    <li>
-                        <strong>Sous-réseau privé 1 (10.0.2.0/24)</strong> : héberge le premier nœud RDS.
-                        Aucune route vers Internet : la base de données est totalement isolée.
-                    </li>
-                    <li>
-                        <strong>Sous-réseau privé 2 (10.0.3.0/24)</strong> : second sous-réseau privé requis par AWS RDS,
-                        qui impose obligatoirement deux zones de disponibilité (AZ) différentes pour garantir la haute disponibilité.
-                    </li>
-                </ul>
+                <!-- Couches -->
+                <div class="architecture-layers">
 
-                <h3>Couche applicative — EC2</h3>
-                <p class="text-block">
-                    L'instance EC2 de type <strong>T3.small</strong> (2 vCPU, 2 Go RAM) tourne sous
-                    <strong>Amazon Linux 2023</strong>. Elle héberge le serveur web Apache et l'application Nextcloud (PHP).
-                    Au premier démarrage, le script <code>userdata.sh</code> est automatiquement exécuté par AWS :
-                    il installe Apache, PHP, télécharge Nextcloud, et configure la connexion à RDS et S3.
-                    Aucune connexion SSH manuelle n'est nécessaire pour l'installation.
-                </p>
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🌐</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Réseau — VPC et sous-réseaux</div>
+                            <p>
+                                Le VPC <code>10.0.0.0/16</code> est découpé en trois sous-réseaux aux rôles distincts :
+                            </p>
+                            <div class="competences-grid" style="margin-top: 1rem">
+                                <div class="competence-card">
+                                    <h4>🟢 Sous-réseau public — 10.0.1.0/24</h4>
+                                    <ul>
+                                        <li>Héberge l'instance EC2 (Nextcloud)</li>
+                                        <li>Exposée sur les ports 80 (HTTP) et 22 (SSH)</li>
+                                        <li>Reliée à un Internet Gateway</li>
+                                    </ul>
+                                </div>
+                                <div class="competence-card">
+                                    <h4>🔴 Sous-réseau privé 1 — 10.0.2.0/24</h4>
+                                    <ul>
+                                        <li>Héberge le premier nœud RDS MySQL</li>
+                                        <li>Aucune route vers Internet</li>
+                                        <li>Totalement isolé du trafic public</li>
+                                    </ul>
+                                </div>
+                                <div class="competence-card">
+                                    <h4>🔴 Sous-réseau privé 2 — 10.0.3.0/24</h4>
+                                    <ul>
+                                        <li>Second nœud RDS dans une AZ différente</li>
+                                        <li>Requis par AWS pour la haute disponibilité</li>
+                                        <li>Aucune route vers Internet</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <h3>Couche base de données — RDS MySQL</h3>
-                <p class="text-block">
-                    La base de données MySQL est hébergée sur <strong>AWS RDS</strong> (service managé),
-                    et non directement sur l'EC2. Ce choix apporte des avantages importants par rapport
-                    à une installation classique : sauvegardes automatiques quotidiennes, application
-                    automatique des patches de sécurité, et monitoring intégré via CloudWatch.
-                    RDS est placé dans les sous-réseaux privés : <strong>il est uniquement joignable
-                    depuis l'EC2</strong>, jamais depuis Internet. Le Security Group associé à RDS
-                    n'autorise les connexions sur le port 3306 que depuis le Security Group de l'EC2.
-                </p>
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">⚙️</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Applicative — EC2 + Nextcloud</div>
+                            <p>
+                                Une instance <strong>EC2 t2.micro</strong> (Ubuntu 22.04) héberge le serveur 
+                                Apache, PHP et Nextcloud. La configuration initiale est entièrement automatisée 
+                                via un script <code>userdata.sh</code> exécuté au premier démarrage.
+                            </p>
+                        </div>
+                    </div>
 
-                <h3>Couche stockage — S3 et IAM</h3>
-                <p class="text-block">
-                    Les fichiers des utilisateurs Nextcloud ne sont pas stockés sur le disque de l'EC2
-                    (qui serait perdu en cas de recréation de l'instance), mais dans un <strong>bucket S3</strong>
-                    dédié. Nextcloud est configuré pour utiliser S3 comme backend de stockage objet.
-                </p>
-                <p class="text-block">
-                    L'accès de l'EC2 au bucket S3 est sécurisé via un <strong>rôle IAM</strong>
-                    (Instance Profile). Ce rôle accorde à l'EC2 les droits de lecture, écriture et
-                    suppression uniquement sur ce bucket précis. Il n'y a <strong>aucune clé AWS
-                    (Access Key / Secret Key) stockée sur le serveur</strong> : l'EC2 obtient ses
-                    permissions automatiquement via le rôle attaché, ce qui élimine le risque de fuite
-                    de credentials.
-                </p>
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🗄️</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Base de données — RDS MySQL</div>
+                            <p>
+                                Une instance <strong>RDS MySQL 8.0</strong> placée en sous-réseau privé stocke 
+                                les métadonnées Nextcloud. Elle n'est accessible que depuis l'instance EC2, 
+                                via un Security Group dédié autorisant uniquement le port <code>3306</code>.
+                            </p>
+                        </div>
+                    </div>
 
-                <h3>Récapitulatif des ressources Terraform</h3>
-                <div class="code-example">
-                    <pre><code># Réseau
-aws_vpc                    → VPC dédié (10.0.0.0/16)
-aws_subnet (x3)            → 1 public + 2 privés
-aws_internet_gateway       → Accès Internet pour l'EC2
-aws_route_table            → Routage du sous-réseau public
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🪣</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Stockage — S3 + IAM</div>
+                            <p>
+                                Les fichiers des utilisateurs sont stockés dans un <strong>bucket S3</strong>. 
+                                L'accès se fait sans clé AWS exposée : un <strong>rôle IAM</strong> est attaché 
+                                à l'instance EC2 via un Instance Profile, permettant à Nextcloud de récupérer 
+                                des credentials temporaires automatiquement depuis le service de métadonnées AWS.
+                            </p>
+                        </div>
+                    </div>
 
-# Sécurité réseau
-aws_security_group (EC2)   → Ports 80 et 22 ouverts depuis Internet
-aws_security_group (RDS)   → Port 3306 ouvert depuis EC2 uniquement
-
-# Calcul
-aws_instance               → EC2 T3.small Amazon Linux 2023
-
-# Base de données
-aws_db_subnet_group        → Groupe de sous-réseaux privés pour RDS
-aws_db_instance            → RDS MySQL managé
-
-# Stockage
-aws_s3_bucket              → Stockage des fichiers Nextcloud
-
-# Identité et accès
-aws_iam_role               → Rôle assumable par EC2
-aws_iam_role_policy        → Droits S3 limités au bucket du projet
-aws_iam_instance_profile   → Lien entre le rôle et l'instance EC2</code></pre>
                 </div>
             </div>
+
 
             <!-- Réalisation -->
             <div class="content-card">
