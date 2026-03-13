@@ -422,6 +422,39 @@ sudo systemctl enable --now httpd</code></pre>
                 </p>
             </div>
 
+            <!-- Compétences du référentiel -->
+            <div class="content-card">
+                <h2>Compétences du Référentiel BTS SIO SISR</h2>
+                <div class="competences-grid">
+
+                    <div class="competence-card">
+                        <h4>📋 B1.4 — Travail en mode projet</h4>
+                        <p style="color: var(--text-light)">Découpage du projet en quatre phases (réseau, serveur, base de données, stockage), avec identification des dépendances entre les composants.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🖥️ B1.5 — Mise à disposition d'un service</h4>
+                        <p style="color: var(--text-light)">Déploiement et mise en service de Nextcloud sur AWS, accessible par les utilisateurs via HTTP depuis un navigateur.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🌐 B2.1 — Concevoir une infrastructure réseau</h4>
+                        <p style="color: var(--text-light)">Conception de l'architecture trois tiers : VPC, sous-réseaux public et privés, Internet Gateway, tables de routage, Security Groups.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>⚙️ B2.2 — Déployer une infrastructure réseau</h4>
+                        <p style="color: var(--text-light)">Installation et configuration manuelle de la pile Apache / PHP / Nextcloud sur EC2, liaison avec RDS MySQL et stockage S3.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🔒 B2.4 — Participer à la gestion de la cybersécurité</h4>
+                        <p style="color: var(--text-light)">Application du principe de moindre privilège : Security Groups restreints au strict nécessaire, rôle IAM limité au seul bucket S3 du projet, aucune clé AWS stockée en clair.</p>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- Perspectives -->
             <div class="content-card">
                 <h2>Perspectives et Améliorations</h2>
@@ -444,25 +477,25 @@ sudo systemctl enable --now httpd</code></pre>
                         entre les utilisateurs et Nextcloud.
                     </li>
                     <li>
-                        <strong>AWS Secrets Manager :</strong> Externaliser les credentials de
-                        la base de données dans AWS Secrets Manager plutôt que dans le fichier
-                        de configuration, pour renforcer la sécurité.
-                    </li>
-                    <li>
                         <strong>IP Élastique :</strong> Associer une Elastic IP à l'instance EC2
                         pour conserver la même adresse publique après chaque redémarrage, ce qui
                         simplifierait la gestion des <code>trusted_domains</code>.
                     </li>
+                    <li>
+                        <strong>Supervision avec CloudWatch :</strong> Créer une alarme sur la métrique
+                        <code>CPUUtilization</code> de l'instance EC2 pour être alerté dès que la charge
+                        dépasse un seuil critique (ex : 80 %), et ainsi anticiper les problèmes de performance
+                        avant qu'ils n'impactent les utilisateurs.
+                    </li>
                 </ul>
 
                 <h3>Ce que je referais différemment</h3>
-                <p class="text-block">
-                    Je configurerais HTTPS dès le départ, car HTTP n'est pas acceptable
-                    pour une solution de stockage de fichiers en production.
-                    J'associerais également une Elastic IP à l'EC2 pour éviter le problème
-                    d'IP dynamique à chaque redémarrage. Il est aussi possible de lier le service à un nom de domaine personnalisé via Route 53 pour une accessibilité plus professionnelle.Enfin, j'envisagerais Terraform
-                    dès la conception pour rendre l'infrastructure immédiatement reproductible.
-                </p>
+                <ul>
+                    <li><strong>HTTPS dès le départ :</strong> HTTP n'est pas acceptable pour une solution de stockage de fichiers, même en lab. J'aurais configuré un certificat SSL dès l'installation.</li>
+                    <li><strong>Elastic IP :</strong> Associer une IP fixe à l'EC2 dès le début pour éviter de devoir mettre à jour les <code>trusted_domains</code> à chaque redémarrage.</li>
+                    <li><strong>Nom de domaine via Route 53 :</strong> Un enregistrement DNS personnalisé rend l'accès plus lisible et professionnel qu'une IP brute.</li>
+                    <li><strong>Secrets Manager :</strong> Externaliser les credentials de la base de données dans AWS Secrets Manager plutôt que dans le fichier de configuration, pour renforcer la sécurité.</li>
+                </ul>
             </div>
 
             <!-- Navigation -->
