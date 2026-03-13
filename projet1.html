@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet 1 - Déploiement Automatisé GLPI sur AWS</title>
+    <title>Projet 1 - Déploiement Nextcloud sur AWS - Portfolio BTS SIO SISR</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,12 +16,11 @@
                 <li><a href="cv.html">CV</a></li>
                 <li><a href="projets.html" class="active">Projets</a></li>
                 <li><a href="missions.html">Missions</a></li>
-                <li><a href="veille.html">Veille</a></li> 
+                <li><a href="veille.html">Veille</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Breadcrumb -->
     <div class="breadcrumb">
         <div class="container">
             <a href="projets.html">← Retour aux projets</a>
@@ -31,404 +30,474 @@
     <section class="project-detail-header">
         <div class="container">
             <div class="project-badge-large">Projet 1</div>
-            <h1>Déploiement Automatisé GLPI sur AWS</h1>
-            <p class="project-subtitle">Infrastructure as Code (IaC) avec Terraform</p>
-            <a href="docs/Compte rendu Projet GLPI Terraform.pdf" target="_blank" class="btn btn-primary">📄 Télécharger le PDF</a>
+            <h1>Déploiement Nextcloud sur AWS</h1>
+            <p class="project-subtitle">Architecture trois tiers — EC2, RDS MySQL, S3</p>
+            <a href="docs/Compte rendu Projet 1 - Nextcloud AWS.pdf" target="_blank" class="btn btn-primary">📄 Télécharger le PDF</a>
         </div>
     </section>
 
-    <section class="content-section">
+    <section class="project-detail-content">
         <div class="container">
-            
-            <!-- Informations générales -->
+
+            <!-- Fiche synthèse -->
             <div class="project-info-card">
                 <h2>📋 Informations générales</h2>
                 <div class="info-grid">
                     <div class="info-item">
-                        <strong>Période</strong>
-                        <p>Février 2026</p>
-                    </div>
-                    <div class="info-item">
                         <strong>Durée</strong>
-                        <p>1 semaine</p>
+                        <p>3 semaines</p>
                     </div>
                     <div class="info-item">
                         <strong>Contexte</strong>
-                        <p>Migration vers le Cloud (AWS)</p>
+                        <p>Formation BTS SIO SISR</p>
                     </div>
                     <div class="info-item">
-                        <strong>Rôle</strong>
-                        <p>Ingénieur Cloud Junior</p>
+                        <strong>Région AWS</strong>
+                        <p>eu-west-3 (Paris)</p>
                     </div>
+                    <div class="info-item">
+                        <strong>Instance</strong>
+                        <p>EC2 T3.small</p>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">AWS EC2</span>
+                    <span class="tag">AWS RDS MySQL</span>
+                    <span class="tag">AWS S3</span>
+                    <span class="tag">IAM</span>
+                    <span class="tag">Amazon Linux 2023</span>
+                    <span class="tag">Apache</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">Nextcloud</span>
+                    <span class="tag">Bash</span>
                 </div>
             </div>
 
             <!-- Contexte et problématique -->
             <div class="content-card">
-                <h2>🎯 Contexte et Problématique</h2>
-                
+                <h2>Contexte et Problématique</h2>
+
                 <h3>Situation initiale</h3>
                 <p class="text-block">
-                    L'entreprise souhaite moderniser son infrastructure de gestion de parc (GLPI). L'infrastructure actuelle sur site manque de flexibilité et l'installation manuelle des serveurs prend trop de temps et est sujette aux erreurs humaines.
+                    Dans le cadre de ma formation BTS SIO SISR, j'ai eu à répondre à un besoin de
+                    stockage collaboratif sécurisé. La solution devait permettre le partage de fichiers
+                    entre collaborateurs sans dépendre d'un serveur physique sur site, tout en garantissant
+                    la confidentialité des données.
                 </p>
 
-                <h3>Problématique identifiée</h3>
+                <h3>Problématique</h3>
                 <p class="text-block">
-                    Comment déployer une infrastructure GLPI fiable, reproductible et sécurisée sur le Cloud public (AWS) en moins de 10 minutes, sans intervention manuelle ?
+                    Comment déployer une infrastructure Nextcloud complète et sécurisée sur AWS,
+                    en séparant les couches applicative, base de données et stockage,
+                    en maîtrisant chaque étape de configuration ?
                 </p>
             </div>
 
             <!-- Objectifs -->
             <div class="content-card">
-                <h2>🎯 Objectifs du Projet</h2>
+                <h2>Objectifs du Projet</h2>
                 <div class="objectives-grid">
                     <div class="objective-item">
                         <div class="objective-number">1</div>
-                        <h4>Automatisation (IaC)</h4>
-                        <p>Utiliser Terraform pour provisionner les ressources AWS (Instances EC2, Sécurité, Réseau) par le code.</p>
+                        <h4>Infrastructure Cloud</h4>
+                        <p>Provisionner les ressources AWS (VPC, EC2, RDS, S3, IAM) via la console AWS, en comprenant le rôle de chaque composant.</p>
                     </div>
                     <div class="objective-item">
                         <div class="objective-number">2</div>
-                        <h4>Installation logicielle automatique</h4>
-                        <p>Utiliser des scripts `User Data` (Bash) pour installer la pile LAMP et GLPI dès le premier démarrage du serveur.</p>
+                        <h4>Architecture trois tiers</h4>
+                        <p>Séparer les couches web (EC2), base de données (RDS MySQL) et stockage fichiers (S3) pour la sécurité et la scalabilité.</p>
                     </div>
                     <div class="objective-item">
                         <div class="objective-number">3</div>
                         <h4>Sécurité Cloud</h4>
-                        <p>Configurer les Security Groups et les rôles IAM pour respecter le principe de moindre privilège.</p>
+                        <p>Appliquer le principe de moindre privilège via les Security Groups (filtrage réseau) et les rôles IAM (accès S3 sans clé en dur).</p>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-number">4</div>
+                        <h4>Configuration serveur</h4>
+                        <p>Installer et configurer manuellement Nextcloud sur l'instance EC2 via SSH, en maîtrisant la pile Apache / PHP / MySQL.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Analyse et conception -->
+            <!-- Choix de la solution -->
             <div class="content-card">
-                <h2>🔍 Analyse et Conception</h2>
-                
+                <h2>Choix de la Solution</h2>
                 <h3>Solutions envisagées</h3>
-                <div class="solutions-comparison">
-                    <div class="solution-card">
-                        <h4>Solution 1 : Déploiement Manuel (Console AWS)</h4>
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <strong>✅ Avantages :</strong>
-                                <ul>
-                                    <li>Interface graphique intuitive pour débuter.</li>
-                                    <li>Pas de code à apprendre.</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <strong>❌ Inconvénients :</strong>
-                                <ul>
-                                    <li>Non reproductible (clics non enregistrés).</li>
-                                    <li>Risque d'oubli d'une étape de sécurité.</li>
-                                    <li>Lent à répliquer pour plusieurs environnements (Test/Prod).</li>
-                                </ul>
-                            </div>
-                        </div>
+
+                <div class="competences-grid">
+
+                    <div class="competence-card">
+                        <h4>❌ Solution 1 — Serveur physique on-premise</h4>
+                        <ul>
+                            <li>Contrôle total du matériel</li>
+                            <li>Pas de coût d'abonnement Cloud</li>
+                            <li style="color:#ef4444">Coût matériel initial élevé</li>
+                            <li style="color:#ef4444">Maintenance physique nécessaire</li>
+                            <li style="color:#ef4444">Pas de redondance native</li>
+                            <li style="color:#ef4444">Scalabilité limitée</li>
+                        </ul>
                     </div>
-                    <div class="solution-card selected">
-                        <div class="solution-badge">✓ Retenue</div>
-                        <h4>Solution 2 : Infrastructure as Code (Terraform)</h4>
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <strong>✅ Avantages :</strong>
-                                <ul>
-                                    <li>Déploiement ultra-rapide et identique à chaque lancement.</li>
-                                    <li>Versionning du code (Git).</li>
-                                    <li>Documentation technique auto-générée par le code.</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <strong>❌ Inconvénients :</strong>
-                                <ul>
-                                    <li>Courbe d'apprentissage plus élevée (HCL).</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p class="text-block">
-                            <strong>Justification du choix :</strong> 
-                            L'approche IaC correspond aux standards actuels du DevOps et des services informatiques en général. Elle garantit que le serveur GLPI sera toujours installé avec la même configuration validée.
-                        </p>
+
+                    <div class="competence-card" style="border-top-color: var(--success-color)">
+                        <h4>✅ Solution retenue — AWS via console</h4>
+                        <ul>
+                            <li>Infrastructure managée, haute disponibilité</li>
+                            <li>Prise en main progressive de chaque service</li>
+                            <li>Contrôle fin de chaque composant</li>
+                            <li>Pas d'outil tiers requis</li>
+                            <li>Services RDS et S3 natifs et fiables</li>
+                            <li>Séparation claire des couches (réseau, BDD, stockage)</li>
+                        </ul>
                     </div>
+
+                    <div class="competence-card">
+                        <h4>💡 Solution envisagée en évolution — Terraform</h4>
+                        <ul>
+                            <li>Infrastructure reproductible en une commande</li>
+                            <li>Versionnée avec Git</li>
+                            <li>Conforme aux pratiques DevOps</li>
+                            <li style="color:#ef4444">Courbe d'apprentissage plus élevée</li>
+                            <li style="color:#ef4444">Outillage supplémentaire requis</li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                <h3>Architecture technique cible</h3>
-                <p class="text-block">
-                    L'architecture repose sur une instance AWS EC2 (T3.micro) sous Ubuntu 22.04 LTS. Elle est protégée par un Security Group strict (Ports 80 et 22) et s'autoconfigure via cloud-init.
-                </p>
-                <!-- Si vous avez un schéma : -->
-                <!-- <img src="images/architecture_aws.png" alt="Schéma architecture AWS" class="schema-img"> -->
+                <div class="competence-card" style="margin-top: 1.5rem; border-top-color: var(--primary-color)">
+                    <h4>💡 Justification du choix</h4>
+                    <p style="color: var(--text-light)">
+                        Le déploiement via la console AWS a été retenu pour maîtriser chaque composant
+                        de l'infrastructure de façon concrète. Cette approche permet de comprendre
+                        précisément le rôle de chaque ressource (VPC, Security Group, IAM) avant
+                        d'envisager leur automatisation. Terraform représente une évolution naturelle
+                        pour rendre cette infrastructure reproductible et versionnée.
+                    </p>
+                </div>
             </div>
+
+
+            <!-- Architecture technique -->
+            <div class="content-card">
+                <h2>Architecture Technique</h2>
+
+                <p class="text-block">
+                    L'infrastructure repose sur une <strong>architecture trois tiers</strong> déployée
+                    dans un VPC dédié, avec une séparation stricte des couches réseau, applicative,
+                    base de données et stockage.
+                </p>
+
+                <!-- Schéma -->
+                <div class="schema-container">
+                    <img src="images/schema_AWS.png" alt="Schéma architecture AWS Nextcloud" class="schema-img">
+                    <p class="schema-caption">Architecture trois tiers — VPC AWS avec EC2, RDS MySQL et S3</p>
+                </div>
+
+                <!-- Couches -->
+                <div class="architecture-layers">
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🌐</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Réseau — VPC et sous-réseaux</div>
+                            <p>
+                                Le VPC <code>10.0.0.0/16</code> est découpé en trois sous-réseaux aux rôles distincts :
+                            </p>
+                            <div class="competences-grid" style="margin-top: 1rem">
+                                <div class="competence-card">
+                                    <h4>🟢 Sous-réseau public — 10.0.1.0/24</h4>
+                                    <ul>
+                                        <li>Héberge l'instance EC2 (Nextcloud)</li>
+                                        <li>Exposée sur les ports 80 (HTTP) et 22 (SSH)</li>
+                                        <li>Reliée à un Internet Gateway</li>
+                                    </ul>
+                                </div>
+                                <div class="competence-card">
+                                    <h4>🔴 Sous-réseau privé 1 — 10.0.2.0/24</h4>
+                                    <ul>
+                                        <li>Héberge le premier nœud RDS MySQL</li>
+                                        <li>Aucune route vers Internet</li>
+                                        <li>Totalement isolé du trafic public</li>
+                                    </ul>
+                                </div>
+                                <div class="competence-card">
+                                    <h4>🔴 Sous-réseau privé 2 — 10.0.3.0/24</h4>
+                                    <ul>
+                                        <li>Second nœud RDS dans une AZ différente</li>
+                                        <li>Requis par AWS pour la haute disponibilité</li>
+                                        <li>Aucune route vers Internet</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">⚙️</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Applicative — EC2 + Nextcloud</div>
+                            <p>
+                                Une instance <strong>EC2 T3.small</strong> (Amazon Linux 2023) héberge le serveur
+                                Apache, PHP et Nextcloud. L'installation a été réalisée manuellement via SSH
+                                après le lancement de l'instance depuis la console AWS.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🗄️</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Base de données — RDS MySQL</div>
+                            <p>
+                                Une instance <strong>RDS MySQL 8.0</strong> placée en sous-réseau privé stocke
+                                les métadonnées Nextcloud. Elle n'est accessible que depuis l'instance EC2,
+                                via un Security Group dédié autorisant uniquement le port <code>3306</code>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🪣</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Couche Stockage — S3 + IAM</div>
+                            <p>
+                                Les fichiers des utilisateurs sont stockés dans un <strong>bucket S3</strong>.
+                                L'accès se fait sans clé AWS exposée : un <strong>rôle IAM</strong> est attaché
+                                à l'instance EC2 via un Instance Profile, permettant à Nextcloud d'accéder
+                                au bucket sans stocker de credentials sur le serveur.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
 
             <!-- Réalisation -->
             <div class="content-card">
-                <h2>⚙️ Réalisation</h2>
+                <h2>Réalisation</h2>
 
-                <h3>Méthodologie DevOps</h3>
+                <h3>Méthodologie</h3>
                 <p class="text-block">
-                    Le projet a été découpé en écriture de code infrastructure (HCL), écriture du script de provisionning (Bash) et déploiement.
+                    Le projet a été découpé en quatre phases : configuration du réseau, déploiement
+                    et configuration du serveur EC2, mise en place de la base de données RDS,
+                    puis configuration du stockage S3 et des droits IAM.
                 </p>
 
                 <div class="timeline-phases">
-                    
-                    <!-- Phase 1 -->
+
                     <div class="phase-item">
                         <div class="phase-header">
                             <span class="phase-number">Phase 1</span>
-                            <span class="phase-duration">Infrastructure</span>
+                            <span class="phase-duration">Réseau</span>
                         </div>
-                        <h4>Codage Terraform</h4>
+                        <h4>Configuration du VPC (Console AWS)</h4>
                         <ul>
-                            <li>Définition du Provider AWS (Region us-east-1).</li>
-                            <li>Recherche dynamique de l'AMI Ubuntu 22.04 LTS.</li>
-                            <li>Configuration du Security Group (Firewall Cloud).</li>
-                            <li>Définition de l'instance EC2 T3.micro.</li>
+                            <li>Création du VPC <code>10.0.0.0/16</code> dans la région eu-west-3 (Paris).</li>
+                            <li>Création des trois sous-réseaux : un public (<code>10.0.1.0/24</code>) et deux privés (<code>10.0.2.0/24</code>, <code>10.0.3.0/24</code>) dans deux zones de disponibilité différentes.</li>
+                            <li>Création et attachement d'un Internet Gateway au VPC.</li>
+                            <li>Configuration de la table de routage du sous-réseau public vers l'Internet Gateway.</li>
+                            <li>Création des Security Groups : un pour l'EC2 (ports 80 et 22), un pour le RDS (port 3306 depuis l'EC2 uniquement).</li>
                         </ul>
                     </div>
 
-                    <!-- Phase 2 -->
                     <div class="phase-item">
                         <div class="phase-header">
                             <span class="phase-number">Phase 2</span>
-                            <span class="phase-duration">Scripting</span>
+                            <span class="phase-duration">Serveur</span>
                         </div>
-                        <h4>Automatisation Bash</h4>
+                        <h4>Déploiement et configuration EC2</h4>
                         <ul>
-                            <li>Rédaction du script `install_glpi.sh`.</li>
-                            <li>Automatisation de l'installation LAMP (Linux Apache MariaDB PHP).</li>
-                            <li>Création silencieuse de la base de données SQL.</li>
-                            <li>Téléchargement et configuration des droits GLPI.</li>
+                            <li>Lancement d'une instance EC2 T3.small (Amazon Linux 2023) dans le sous-réseau public.</li>
+                            <li>Génération et association d'une paire de clés SSH pour l'accès sécurisé.</li>
+                            <li>Connexion SSH à l'instance et installation d'Apache, PHP et des extensions requises par Nextcloud.</li>
+                            <li>Téléchargement et déploiement de Nextcloud dans le répertoire web Apache.</li>
+                            <li>Ajustement des permissions sur les répertoires Nextcloud (<code>chown -R apache:apache</code>).</li>
                         </ul>
                     </div>
 
-                    <!-- Phase 3 -->
                     <div class="phase-item">
                         <div class="phase-header">
                             <span class="phase-number">Phase 3</span>
-                            <span class="phase-duration">Déploiement</span>
+                            <span class="phase-duration">Base de données</span>
                         </div>
-                        <h4>Terraform Apply</h4>
+                        <h4>Configuration RDS MySQL</h4>
                         <ul>
-                            <li>Initialisation (`terraform init`).</li>
-                            <li>Planification (`terraform plan`).</li>
-                            <li>Application et récupération de l'IP (`terraform apply`).</li>
+                            <li>Création d'un DB Subnet Group associant les deux sous-réseaux privés.</li>
+                            <li>Lancement d'une instance RDS MySQL 8.0 dans le sous-réseau privé, associée au Security Group RDS.</li>
+                            <li>Création de la base de données et de l'utilisateur Nextcloud via connexion MySQL depuis l'EC2.</li>
+                            <li>Configuration de la connexion dans <code>config.php</code> de Nextcloud (endpoint RDS, port 3306).</li>
                         </ul>
                     </div>
+
+                    <div class="phase-item">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 4</span>
+                            <span class="phase-duration">Stockage</span>
+                        </div>
+                        <h4>S3 et IAM</h4>
+                        <ul>
+                            <li>Création d'un bucket S3 dédié au stockage des fichiers Nextcloud.</li>
+                            <li>Création d'un rôle IAM autorisant l'accès S3 (GetObject, PutObject, DeleteObject, ListBucket) uniquement sur ce bucket.</li>
+                            <li>Attachement du rôle IAM à l'instance EC2 via un Instance Profile (sans stocker de clé AWS sur le serveur).</li>
+                            <li>Configuration du stockage objet dans Nextcloud avec <code>use_instance_credentials = true</code>.</li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                <h3>Mise en œuvre technique (Extraits de code)</h3>
-                
-                <!-- Étape 1 -->
-                <h4>1. Définition de l'instance (main.tf)</h4>
+                <h3>Commandes clés exécutées sur l'EC2</h3>
+
+                <h4>1. Installation de la pile Apache / PHP</h4>
                 <p class="text-block">
-                    Utilisation d'une instance T3.micro (éligible Free Tier) et injection du script via `user_data`.
+                    Après connexion SSH, installation des paquets nécessaires à Nextcloud sur Amazon Linux 2023.
                 </p>
                 <div class="code-example">
-                    <pre><code>resource "aws_instance" "srv_glpi" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro" # Optimisé pour le Cloud AWS actuel
-  key_name      = "glpikey" 
+                    <pre><code>sudo dnf install -y httpd php php-mysqlnd php-gd php-xml \
+  php-mbstring php-curl php-zip php-intl php-bcmath
 
-  vpc_security_group_ids = [aws_security_group.glpi_sg.id]
-
-  # Injection du script d'installation automatique
-  user_data = file("install_glpi.sh")
-
-  tags = {
-    Name = "GLPI-Server-BTS"
-    Project = "BTS-SIO-BLOC-6"
-  }
-}</code></pre>
+sudo systemctl enable --now httpd</code></pre>
                 </div>
 
-                <!-- Étape 2 -->
-                <h4>2. Script d'installation automatique (install_glpi.sh)</h4>
+                <h4>2. Configuration du stockage S3 dans Nextcloud</h4>
                 <p class="text-block">
-                    Ce script est exécuté par AWS au premier démarrage. Il installe la stack LAMP et configure la base de données sans intervention humaine. Il créé le fichier de configuration Apache pour GLPI et redémarre le service.
+                    Nextcloud est configuré pour utiliser S3 comme backend de stockage.
+                    Le paramètre <code>use_instance_credentials = true</code> indique à Nextcloud
+                    d'utiliser le rôle IAM de l'instance plutôt que des clés AWS statiques.
                 </p>
                 <div class="code-example">
-                    <pre><code>#!/bin/bash
-
-# 1. Mise à jour du système
-apt update
-apt upgrade -y
-
-# 2. Installation Apache, MariaDB et PHP (avec les extensions requises par GLPI)
-apt-get install -y apache2 mariadb-server php libapache2-mod-php php-mysql php-xml php-mbstring php-curl php-gd php-intl php-ldap php-apcu php-zip php-bz2
-
-# 3. Configuration de la base de données (Création auto user/base)
-# On lance le service
-systemctl start mariadb
-systemctl enable mariadb
-
-# On créé la BDD et l'utilisateur (Mot de passe: BTSsio2024!)
-mysql -e "CREATE DATABASE glpidb;"
-mysql -e "CREATE USER 'glpi_user'@'localhost' IDENTIFIED BY 'admin123';"
-mysql -e "GRANT ALL PRIVILEGES ON glpidb.* TO 'glpi_user'@'localhost';"
-mysql -e "FLUSH PRIVILEGES;"
-
-echo "Configuration de PHP..."
-sed -i 's/memory_limit = .*/memory_limit = 256M/' /etc/php/8.1/apache2/php.ini
-sed -i 's/upload_max_filesize = .*/upload_max_filesize = 20M/' /etc/php/8.1/apache2/php.ini
-sed -i 's/max_execution_time = .*/max_execution_time = 300/' /etc/php/8.1/apache2/php.ini
-sed -i 's/session.cookie_httponly =.*/session.cookie_httponly = on/' /etc/php/8.1/apache2/php.ini
-
-# 4. Téléchargement et installation de GLPI (Version 10.0.10 stable)
-cd /tmp
-wget https://github.com/glpi-project/glpi/releases/download/10.0.15/glpi-10.0.15.tgz
-tar -xzvf glpi-10.0.15.tgz -C /var/www/
-
-# 5. Permissions (Donner les droits à Apache)
-chown -R www-data:www-data /var/www/glpi
-chmod -R 755 /var/www/glpi
-
-# 6. Configuration Apache (VirtualHost basique)
-cat > /etc/apache2/sites-available/glpi.conf <<'EOF'
-<VirtualHost *:80>
-
-    DocumentRoot /var/www/glpi/public
-
-    # Si vous voulez placer GLPI dans un sous-dossier, utilisez un Alias
-    # DocumentRoot /var/www
-    # Alias "/glpi" "/var/www/glpi/public"
-
-    <Directory /var/www/glpi/public>
-        Require all granted
-
-        RewriteEngine On
-
-        # S'assurer que les en-têtes d'autorisation sont passés à PHP
-        # Nécessaire pour l'API, CalDAV, etc.
-        RewriteCond %{HTTP:Authorization} ^(.+)$
-        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-        # Rediriger toutes les requêtes vers le routeur GLPI, sauf si le fichier existe
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ index.php [QSA,L]
-    </Directory>
-
-    # Logs
-    ErrorLog ${APACHE_LOG_DIR}/glpi_error.log
-    CustomLog ${APACHE_LOG_DIR}/glpi_access.log combined
-</VirtualHost>
-EOF
-
-# 7. Activation du site et redémarrage
-a2ensite glpi.conf
-a2dissite 000-default.conf
-a2enmod rewrite
-systemctl restart apache2
-systemctl reload apache2
-</code></pre>
+                    <pre><code>sudo -u apache php /var/www/html/nextcloud/occ config:system:set \
+  objectstore arguments use_instance_credentials \
+  --value=true \
+  --type=boolean</code></pre>
                 </div>
 
-                <!-- Étape 3 -->
-                <h4>3. Sécurité réseau (network_security.tf)</h4>
+                <h4>3. Déclaration des trusted_domains</h4>
                 <p class="text-block">
-                    Configuration du pare-feu AWS (Security Group) pour n'autoriser que le strict nécessaire.
+                    Nextcloud bloque les accès depuis des domaines non déclarés dans sa configuration.
+                    L'IP publique de l'EC2 est récupérée depuis le service de métadonnées AWS
+                    et déclarée comme domaine de confiance.
                 </p>
                 <div class="code-example">
-                    <pre><code>resource "aws_security_group" "glpi_sg" {
-  name = "glpi-security-group"
-  
-  ingress { # HTTP pour l'accès web
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress { # SSH pour l'administration
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}</code></pre>
-                </div>
-
-                <h3>Technologies utilisées</h3>
-                <div class="tech-stack">
-                    
-                    <div class="tech-item">
-                        <h4>Terraform</h4>
-                        <p>Outil d'Infrastructure as Code pour le provisionning.</p>
-                        <span class="tech-version">Version : 1.9.x</span>
-                    </div>
-
-                    <div class="tech-item">
-                        <h4>AWS EC2</h4>
-                        <p>Infrastructure Cloud Computing.</p>
-                        <span class="tech-version">Type : T3.micro</span>
-                    </div>
-
-                    <div class="tech-item">
-                        <h4>Ubuntu Server</h4>
-                        <p>Système d'exploitation stable (LTS).</p>
-                        <span class="tech-version">Version : 22.04 Jammy</span>
-                    </div>
-
-                    <div class="tech-item">
-                        <h4>Bash</h4>
-                        <p>Scripting pour l'automatisation post-démarrage.</p>
-                        <span class="tech-version">User Data</span>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Compétences et difficultés -->
-            <div class="content-card">
-                <h2>💡 Compétences Développées et Difficultés</h2>
-                
-                <h3>Compétences techniques acquises</h3>
-                <div class="competences-detail">
-                    <div class="competence-item">
-                        <strong>Infrastructure as Code</strong>
-                        <p>Maîtrise de la syntaxe Terraform et des ressources AWS.</p>
-                    </div>
-                    <div class="competence-item">
-                        <strong>Cloud Computing</strong>
-                        <p>Gestion des instances EC2, Security Groups et IAM.</p>
-                    </div>
-                    <div class="competence-item">
-                        <strong>Automatisation Système</strong>
-                        <p>Scripting avancé pour le déploiement applicatif (Cloud-init).</p>
-                    </div>
+                    <pre><code>sudo -u apache php /var/www/html/nextcloud/occ config:system:set \
+  trusted_domains 1 \
+  --value="$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)"</code></pre>
                 </div>
 
                 <h3>Difficultés rencontrées et solutions</h3>
                 <div class="difficulties">
                     <div class="difficulty-item">
-                        <h4>Difficulté : Versions AMI Ubuntu</h4>
-                        <p><strong>Problème :</strong> Le code Terraform ne trouvait pas l'image Ubuntu 24.04 à cause d'un changement de nommage sur AWS.</p>
-                        <p><strong>Solution :</strong> Passage à la version 22.04 LTS (plus stable pour GLPI) et ajustement des filtres de recherche Terraform.</p>
+                        <h4>Difficulté : Les deux zones de disponibilité pour RDS</h4>
+                        <p><strong>Problème :</strong> AWS RDS exige un "DB Subnet Group" contenant des sous-réseaux dans au moins deux zones de disponibilité différentes. Avec un seul sous-réseau privé, la création du RDS était bloquée.</p>
+                        <p><strong>Solution :</strong> Ajout d'un second sous-réseau privé (<code>10.0.3.0/24</code>) dans une deuxième AZ, puis création du DB Subnet Group en associant les deux sous-réseaux privés.</p>
                     </div>
                     <div class="difficulty-item">
-                        <h4>Difficulté : Type d'instance AWS</h4>
-                        <p><strong>Problème :</strong> L'instance `t2.micro` n'était plus disponible dans l'offre gratuite dans ma région.</p>
-                        <p><strong>Solution :</strong> Modification du code Terraform pour utiliser `t3.micro`.</p>
+                        <h4>Difficulté : Accès S3 sans exposer de clés AWS</h4>
+                        <p><strong>Problème :</strong> Nextcloud nécessite des credentials AWS pour accéder à S3. Stocker une Access Key directement dans la configuration représente un risque de sécurité majeur (fuite, etc.).</p>
+                        <p><strong>Solution :</strong> Utilisation d'un rôle IAM attaché à l'instance EC2 via un Instance Profile. Nextcloud est configuré avec <code>use_instance_credentials = true</code> pour récupérer les credentials temporaires automatiquement depuis le service de métadonnées AWS.</p>
+                    </div>
+                    <div class="difficulty-item">
+                        <h4>Difficulté : IP publique dynamique et trusted_domains</h4>
+                        <p><strong>Problème :</strong> Nextcloud bloque les accès depuis des domaines non déclarés dans sa configuration <code>trusted_domains</code>. Après un redémarrage d'instance, l'IP publique peut changer.</p>
+                        <p><strong>Solution :</strong> Interrogation du service de métadonnées EC2 (<code>169.254.169.254</code>) pour récupérer l'IP publique courante et la déclarer dynamiquement dans la configuration Nextcloud.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Améliorations possibles -->
+            <!-- Bilan -->
             <div class="content-card">
-                <h2>🚀 Perspectives et Améliorations</h2>
-                
-                <h3>Évolutions possibles</h3>
-                <ul>
-                    <li>Séparer la base de données sur un service managé (AWS RDS) pour la redondance.</li>
-                    <li>Stocker l'état Terraform (tfstate) dans un bucket S3 pour le travail en équipe.</li>
-                </ul>
-
-                <h3>Ce que je referais différemment</h3>
+                <h2>Bilan</h2>
                 <p class="text-block">
-                    J'utiliserais Ansible en complément de Terraform. Terraform créerait le serveur, et Ansible se chargerait de la configuration fine de GLPI, ce qui est plus flexible qu'un script Bash unique.
+                    Le projet remplit l'ensemble des objectifs fixés : l'infrastructure Nextcloud est
+                    opérationnelle sur AWS avec une architecture trois tiers. La base de données
+                    n'est jamais exposée à Internet, et les fichiers utilisateurs sont persistants sur S3,
+                    indépendamment du cycle de vie de l'instance EC2.
+                </p>
+                <p class="text-block">
+                    Sur le plan de la sécurité, le principe de moindre privilège est appliqué à deux niveaux :
+                    les Security Groups limitent les flux réseau au strict nécessaire, et le rôle IAM
+                    restreint l'accès S3 au seul bucket du projet, sans aucune clé stockée en clair.
+                    Ce projet m'a permis de maîtriser concrètement les services AWS fondamentaux (VPC, EC2, RDS, S3, IAM)
+                    en configurant chacun d'eux manuellement.
                 </p>
             </div>
 
-            <!-- Liens vers le projet 2 -->
+            <!-- Compétences du référentiel -->
+            <div class="content-card">
+                <h2>Compétences du Référentiel BTS SIO SISR</h2>
+                <div class="competences-grid">
+
+                    <div class="competence-card">
+                        <h4>📋 B1.4 — Travail en mode projet</h4>
+                        <p style="color: var(--text-light)">Découpage du projet en quatre phases (réseau, serveur, base de données, stockage), avec identification des dépendances entre les composants.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🖥️ B1.5 — Mise à disposition d'un service</h4>
+                        <p style="color: var(--text-light)">Déploiement et mise en service de Nextcloud sur AWS, accessible par les utilisateurs via HTTP depuis un navigateur.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🌐 B2.1 — Concevoir une infrastructure réseau</h4>
+                        <p style="color: var(--text-light)">Conception de l'architecture trois tiers : VPC, sous-réseaux public et privés, Internet Gateway, tables de routage, Security Groups.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>⚙️ B2.2 — Déployer une infrastructure réseau</h4>
+                        <p style="color: var(--text-light)">Installation et configuration manuelle de la pile Apache / PHP / Nextcloud sur EC2, liaison avec RDS MySQL et stockage S3.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🔒 B2.4 — Participer à la gestion de la cybersécurité</h4>
+                        <p style="color: var(--text-light)">Application du principe de moindre privilège : Security Groups restreints au strict nécessaire, rôle IAM limité au seul bucket S3 du projet, aucune clé AWS stockée en clair.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Perspectives -->
+            <div class="content-card">
+                <h2>Perspectives et Améliorations</h2>
+
+                <h3>Automatisation avec Terraform</h3>
+                <p class="text-block">
+                    L'évolution naturelle de ce projet serait d'automatiser l'ensemble de ces étapes
+                    via <strong>Terraform</strong> (Infrastructure as Code). Chaque ressource créée manuellement
+                    dans la console (VPC, Security Groups, EC2, RDS, S3, IAM) se traduirait en un bloc
+                    de code HCL déclaratif, versionnable sur Git et redéployable en une seule commande
+                    <code>terraform apply</code>. Cela éliminerait le risque d'erreur humaine et faciliterait
+                    la collaboration en équipe.
+                </p>
+
+                <h3>Autres évolutions possibles</h3>
+                <ul>
+                    <li>
+                        <strong>HTTPS :</strong> Ajouter un certificat SSL/TLS pour sécuriser les échanges
+                        entre les utilisateurs et Nextcloud.
+                    </li>
+                    <li>
+                        <strong>IP Élastique :</strong> Associer une Elastic IP à l'instance EC2
+                        pour conserver la même adresse publique après chaque redémarrage, ce qui
+                        simplifierait la gestion des <code>trusted_domains</code>.
+                    </li>
+                    <li>
+                        <strong>Supervision avec CloudWatch :</strong> Créer une alarme sur la métrique
+                        <code>CPUUtilization</code> de l'instance EC2 pour être alerté dès que la charge
+                        dépasse un seuil critique (ex : 80 %), et ainsi anticiper les problèmes de performance
+                        avant qu'ils n'impactent les utilisateurs.
+                    </li>
+                </ul>
+
+                <h3>Ce que je referais différemment</h3>
+                <ul>
+                    <li><strong>HTTPS dès le départ :</strong> HTTP n'est pas acceptable pour une solution de stockage de fichiers, même en lab. J'aurais configuré un certificat SSL dès l'installation.</li>
+                    <li><strong>Elastic IP :</strong> Associer une IP fixe à l'EC2 dès le début pour éviter de devoir mettre à jour les <code>trusted_domains</code> à chaque redémarrage.</li>
+                    <li><strong>Nom de domaine via Route 53 :</strong> Un enregistrement DNS personnalisé rend l'accès plus lisible et professionnel qu'une IP brute.</li>
+                    <li><strong>Secrets Manager :</strong> Externaliser les credentials de la base de données dans AWS Secrets Manager plutôt que dans le fichier de configuration, pour renforcer la sécurité.</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
             <div class="project-navigation">
                 <a href="projets.html" class="btn btn-secondary">← Tous les projets</a>
                 <a href="projet2.html" class="btn btn-primary">Voir le Projet 2 →</a>
