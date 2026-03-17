@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet 2 - Portfolio</title>
+    <title>Projet 2 - Segmentation Réseau VLAN sur équipements Cisco - Portfolio BTS SIO SISR</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,63 +16,492 @@
                 <li><a href="cv.html">CV</a></li>
                 <li><a href="projets.html" class="active">Projets</a></li>
                 <li><a href="missions.html">Missions</a></li>
-                <li><a href="veille.html">Veille</a></li> 
+                <li><a href="veille.html">Veille</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Breadcrumb -->
     <div class="breadcrumb">
         <div class="container">
             <a href="projets.html">← Retour aux projets</a>
         </div>
-    </div>
+    </div>12 - EPREUVE PRATIQUE E6 - INFRASTRUCTURE RÉSEAU ROUTEUR SWITCH VLAN DHCP - BTS SIO 2026
 
-    <section class="project-detail-header projet-2">
+    <section class="project-detail-header">
         <div class="container">
             <div class="project-badge-large">Projet 2</div>
-            <h1>[Titre du Projet 2]</h1>
-            <p class="project-subtitle">[Sous-titre ou phrase d'accroche]</p>
-            <a href="docs/Compte_rendu_Projet2.pdf" target="_blank" class="btn btn-primary">📄 Télécharger le PDF</a>
+            <h1>Segmentation Réseau VLAN sur équipements Cisco</h1>
+            <p class="project-subtitle">Router-on-a-Stick — Cisco 1921 &amp; Cisco 2960S — Inter-VLAN, DHCP, NAT</p>
+            <a href="docs/C12 - EPREUVE PRATIQUE E6 - INFRASTRUCTURE RÉSEAU ROUTEUR SWITCH VLAN DHCP - BTS SIO 2026.pdf" target="_blank" class="btn btn-primary">📄 Télécharger le PDF</a>
         </div>
     </section>
 
-    <section class="content-section">
+    <section class="project-detail-content">
         <div class="container">
-            
-            <!-- [MÊME STRUCTURE QUE PROJET1.HTML] -->
-            <!-- Copiez toute la structure de projet1.html et adaptez le contenu -->
-            
-            <!-- Informations générales -->
+
+            <!-- Fiche synthèse -->
             <div class="project-info-card">
                 <h2>📋 Informations générales</h2>
                 <div class="info-grid">
                     <div class="info-item">
-                        <strong>Période</strong>
-                        <p>[Dates]</p>
-                    </div>
-                    <div class="info-item">
                         <strong>Durée</strong>
-                        <p>[Durée]</p>
+                        <p>2 semaines</p>
                     </div>
                     <div class="info-item">
                         <strong>Contexte</strong>
-                        <p>[Contexte]</p>
+                        <p>Formation BTS SIO SISR</p>
                     </div>
                     <div class="info-item">
-                        <strong>Rôle</strong>
-                        <p>[Rôle]</p>
+                        <strong>Routeur</strong>
+                        <p>Cisco 1921</p>
                     </div>
+                    <div class="info-item">
+                        <strong>Switch</strong>
+                        <p>Cisco 2960S</p>
+                    </div>
+                </div>
+                <div class="tech-tags">
+                    <span class="tag">Cisco IOS</span>
+                    <span class="tag">VLAN</span>
+                    <span class="tag">802.1Q</span>
+                    <span class="tag">Trunk</span>
+                    <span class="tag">Router-on-a-Stick</span>
+                    <span class="tag">DHCP</span>
+                    <span class="tag">NAT/PAT</span>
+                    <span class="tag">Inter-VLAN Routing</span>
                 </div>
             </div>
 
             <!-- Contexte et problématique -->
             <div class="content-card">
-                <h2>🎯 Contexte et Problématique</h2>
-                <!-- ... même structure ... -->
+                <h2>Contexte et Problématique</h2>
+
+                <h3>Situation initiale</h3>
+                <p class="text-block">
+                    Dans le cadre de ma formation BTS SIO SISR, j'ai eu à concevoir et déployer
+                    une infrastructure réseau segmentée sur équipements physiques Cisco. L'objectif
+                    était de séparer deux groupes d'utilisateurs (ou deux services) dans des réseaux
+                    logiquement distincts, tout en leur permettant d'accéder à Internet via un
+                    routeur unique.
+                </p>
+
+                <h3>Problématique</h3>
+                <p class="text-block">
+                    Comment cloisonner deux populations de machines dans des VLANs distincts,
+                    assurer l'attribution automatique des adresses IP via DHCP, permettre la
+                    communication inter-VLAN contrôlée et garantir l'accès Internet à l'ensemble
+                    des postes, le tout avec un seul routeur et un seul switch ?
+                </p>
             </div>
 
-            <!-- ... TOUS LES AUTRES BLOCS ... -->
+            <!-- Objectifs -->
+            <div class="content-card">
+                <h2>Objectifs du Projet</h2>
+                <div class="objectives-grid">
+                    <div class="objective-item">
+                        <div class="objective-number">1</div>
+                        <h4>Segmentation réseau</h4>
+                        <p>Créer deux VLANs (VLAN 20 et VLAN 30) sur le switch Cisco 2960S pour isoler logiquement deux groupes de machines.</p>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-number">2</div>
+                        <h4>Routage inter-VLAN</h4>
+                        <p>Configurer le routeur Cisco 1921 en mode Router-on-a-Stick (sous-interfaces 802.1Q) pour assurer le routage entre les VLANs.</p>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-number">3</div>
+                        <h4>Service DHCP</h4>
+                        <p>Déployer un serveur DHCP directement sur le routeur pour distribuer automatiquement les adresses IP dans chaque VLAN.</p>
+                    </div>
+                    <div class="objective-item">
+                        <div class="objective-number">4</div>
+                        <h4>Accès Internet (NAT)</h4>
+                        <p>Configurer le NAT Overload (PAT) sur le routeur pour permettre aux machines des deux VLANs d'accéder à Internet via une seule adresse IP publique.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Choix de la solution -->
+            <div class="content-card">
+                <h2>Choix de la Solution</h2>
+                <h3>Solutions envisagées pour le routage inter-VLAN</h3>
+
+                <div class="competences-grid">
+
+                    <div class="competence-card" style="border-top-color: var(--success-color)">
+                        <h4>✅ Solution retenue — Router-on-a-Stick</h4>
+                        <ul>
+                            <li>Compatible avec le matériel disponible (Cisco 1921 + 2960S)</li>
+                            <li>Un seul câble trunk entre le switch et le routeur</li>
+                            <li>Routage, DHCP et NAT centralisés sur un équipement unique</li>
+                            <li>Configuration entièrement via Cisco IOS</li>
+                            <li>Architecture simple et lisible</li>
+                        </ul>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>💡 Solution envisagée en évolution — Routeur dédié par VLAN</h4>
+                        <ul>
+                            <li>Isolation stricte du trafic inter-VLAN</li>
+                            <li>Pas de point de congestion sur le lien trunk</li>
+                            <li style="color:#ef4444">Coût matériel multiplié</li>
+                            <li style="color:#ef4444">Complexité de gestion accrue</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="competence-card" style="margin-top: 1.5rem; border-top-color: var(--primary-color)">
+                    <h4>💡 Justification du choix</h4>
+                    <p style="color: var(--text-light)">
+                        La solution Router-on-a-Stick a été retenue car elle répond à l'ensemble des
+                        contraintes du projet : matériel disponible (Cisco 1921 et 2960S), simplicité
+                        de câblage (un seul lien trunk), et centralisation des services réseau (DHCP,
+                        NAT, routage) sur un équipement unique. Cette architecture est représentative
+                        des déploiements PME et constitue une base solide pour comprendre les concepts
+                        de segmentation réseau.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Architecture technique -->
+            <div class="content-card">
+                <h2>Architecture Technique</h2>
+
+                <p class="text-block">
+                    L'infrastructure repose sur un <strong>switch Cisco 2960S</strong> connecté en
+                    trunk à un <strong>routeur Cisco 1921</strong>. Le routeur porte deux sous-interfaces
+                    (une par VLAN), assure le routage inter-VLAN, distribue les adresses IP via DHCP
+                    et traduit les adresses vers Internet via NAT Overload (PAT).
+                </p>
+
+                <!-- Couches -->
+                <div class="architecture-layers">
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🔌</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Segmentation — Switch Cisco 2960S</div>
+                            <p>
+                                Le switch héberge deux VLANs distincts. Le port G1/0/24 est configuré en
+                                <strong>trunk 802.1Q</strong> vers le routeur et transporte les deux VLANs.
+                                Les ports accès sont répartis en deux groupes :
+                            </p>
+                            <div class="competences-grid" style="margin-top: 1rem">
+                                <div class="competence-card">
+                                    <h4>🟦 VLAN 20 — Ports G1/0/1 à G1/0/4</h4>
+                                    <ul>
+                                        <li>Réseau : <code>10.0.20.0/24</code></li>
+                                        <li>Passerelle : <code>10.0.20.254</code></li>
+                                        <li>4 ports en mode accès</li>
+                                        <li>DTP désactivé (<code>nonegotiate</code>)</li>
+                                    </ul>
+                                </div>
+                                <div class="competence-card">
+                                    <h4>🟩 VLAN 30 — Ports G1/0/5 à G1/0/8</h4>
+                                    <ul>
+                                        <li>Réseau : <code>10.0.30.0/24</code></li>
+                                        <li>Passerelle : <code>10.0.30.254</code></li>
+                                        <li>4 ports en mode accès</li>
+                                        <li>DTP désactivé (<code>nonegotiate</code>)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🔀</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Routage inter-VLAN — Cisco 1921 (Router-on-a-Stick)</div>
+                            <p>
+                                L'interface <strong>G0/0</strong> du routeur est connectée au switch via le lien trunk.
+                                Elle est découpée en deux sous-interfaces logiques, chacune associée à un VLAN via
+                                l'encapsulation <code>dot1q</code> et portant l'adresse de passerelle du VLAN correspondant.
+                            </p>
+                            <div class="competences-grid" style="margin-top: 1rem">
+                                <div class="competence-card">
+                                    <h4>⚙️ G0/0.20 — VLAN 20</h4>
+                                    <ul>
+                                        <li>Encapsulation : <code>dot1q 20</code></li>
+                                        <li>IP : <code>10.0.20.254 /24</code></li>
+                                        <li>NAT inside</li>
+                                    </ul>
+                                </div>
+                                <div class="competence-card">
+                                    <h4>⚙️ G0/0.30 — VLAN 30</h4>
+                                    <ul>
+                                        <li>Encapsulation : <code>dot1q 30</code></li>
+                                        <li>IP : <code>10.0.30.254 /24</code></li>
+                                        <li>NAT inside</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">📡</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">DHCP — Service intégré au routeur</div>
+                            <p>
+                                Le routeur Cisco 1921 héberge deux pools DHCP, un par VLAN.
+                                Les adresses de passerelle (<code>10.0.20.254</code> et <code>10.0.30.254</code>)
+                                sont exclues des plages distribuées pour éviter tout conflit d'adresse.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="arch-layer">
+                        <div class="arch-layer-icon">🌐</div>
+                        <div class="arch-layer-content">
+                            <div class="arch-layer-title">Accès Internet — NAT Overload (PAT)</div>
+                            <p>
+                                L'interface <strong>G0/1</strong> du routeur est connectée à la passerelle Internet
+                                (adresse obtenue par DHCP auprès du FAI) et est déclarée comme interface
+                                <em>NAT outside</em>. Une ACL autorise l'ensemble du trafic interne
+                                (<code>permit any</code>) à être traduit. Le <strong>NAT Overload</strong>
+                                (PAT) permet à toutes les machines des deux VLANs de partager l'adresse
+                                IP publique unique de l'interface G0/1.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Réalisation -->
+            <div class="content-card">
+                <h2>Réalisation</h2>
+
+                <h3>Méthodologie</h3>
+                <p class="text-block">
+                    Le projet a été découpé en deux phases : configuration du switch (VLANs et trunk),
+                    puis configuration du routeur (sous-interfaces, DHCP, NAT). La validation a été
+                    effectuée par des tests de connectivité (<code>ping</code>) depuis les postes de
+                    chaque VLAN vers la passerelle, vers l'autre VLAN et vers Internet.
+                </p>
+
+                <div class="timeline-phases">
+
+                    <div class="phase-item">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 1</span>
+                            <span class="phase-duration">Switch</span>
+                        </div>
+                        <h4>Configuration du Cisco 2960S</h4>
+                        <ul>
+                            <li>Création des VLANs 20 et 30 dans la base de données VLAN du switch.</li>
+                            <li>Configuration du port G1/0/24 en mode trunk (<code>switchport mode trunk</code>), avec restriction aux VLANs 20 et 30 (<code>switchport trunk allowed vlan 20,30</code>).</li>
+                            <li>Configuration des ports G1/0/1 à G1/0/4 en mode accès VLAN 20.</li>
+                            <li>Configuration des ports G1/0/5 à G1/0/8 en mode accès VLAN 30.</li>
+                            <li>Désactivation du protocole DTP sur tous les ports (<code>switchport nonegotiate</code>) pour éviter la négociation automatique non souhaitée.</li>
+                        </ul>
+                    </div>
+
+                    <div class="phase-item">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 2</span>
+                            <span class="phase-duration">Routeur</span>
+                        </div>
+                        <h4>Configuration du Cisco 1921</h4>
+                        <ul>
+                            <li>Activation de l'interface G0/0 (côté switch) et création des deux sous-interfaces avec encapsulation 802.1Q et adressage de passerelle.</li>
+                            <li>Activation de l'interface G0/1 (côté Internet) en DHCP pour obtenir l'adresse publique du FAI.</li>
+                            <li>Déclaration des exclusions DHCP pour les adresses de passerelle, puis création des pools DHCP pour chaque VLAN.</li>
+                            <li>Création de l'ACL standard autorisant tout le trafic interne à être traduit par le NAT.</li>
+                            <li>Configuration du NAT Overload sur G0/1, déclaration des interfaces NAT inside (G0/0.20 et G0/0.30) et NAT outside (G0/1).</li>
+                            <li>Sauvegarde de la configuration (<code>write mem</code>).</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <h3>Configuration complète du routeur</h3>
+
+                <h4>1. Interfaces et sous-interfaces</h4>
+                <p class="text-block">
+                    Activation des interfaces physiques et création des sous-interfaces Router-on-a-Stick
+                    avec encapsulation 802.1Q, une sous-interface par VLAN.
+                </p>
+                <div class="code-example">
+                    <pre><code>en
+conf t
+int g0/0
+ no sh
+ ip add dhcp
+int g0/1
+ no sh
+int g0/0.20
+ enc dot1q 20
+ ip add 10.0.20.254 255.255.255.0
+int g0/0.30
+ enc dot1q 30
+ ip add 10.0.30.254 255.255.255.0</code></pre>
+                </div>
+
+                <h4>2. Service DHCP</h4>
+                <p class="text-block">
+                    Exclusion des adresses de passerelle, puis création des pools DHCP pour VLAN 20
+                    et VLAN 30. Chaque pool déclare le réseau distribué et la passerelle par défaut.
+                </p>
+                <div class="code-example">
+                    <pre><code>ip dhcp excluded-address 10.0.20.254
+ip dhcp excluded-address 10.0.30.254
+ip dhcp pool vlan20
+ network 10.0.20.0 255.255.255.0
+ default-router 10.0.20.254
+ dns-server 8.8.8.8
+ exit
+ip dhcp pool vlan30
+ network 10.0.30.0 255.255.255.0
+ default-router 10.0.30.254
+ dns-server 8.8.8.8
+ exit</code></pre>
+                </div>
+
+                <h4>3. NAT Overload (PAT)</h4>
+                <p class="text-block">
+                    L'ACL 1 autorise tout le trafic interne à être traduit. Le NAT Overload
+                    utilise l'adresse de l'interface G0/1 (obtenue par DHCP du FAI) pour
+                    translater l'ensemble des connexions sortantes.
+                </p>
+                <div class="code-example">
+                    <pre><code>access-list 1 permit any
+ip nat inside source list 1 int g0/1 overload
+int g0/0.20
+ ip nat inside
+int g0/0.30
+ ip nat inside
+int g0/1
+ ip nat outside
+end
+write mem</code></pre>
+                </div>
+
+                <h3>Configuration complète du switch</h3>
+
+                <h4>VLANs, trunk et ports accès</h4>
+                <p class="text-block">
+                    Création des VLANs, configuration du port trunk vers le routeur (G1/0/24)
+                    et affectation des ports accès aux VLANs correspondants.
+                </p>
+                <div class="code-example">
+                    <pre><code>en
+conf t
+vlan 20
+ exit
+vlan 30
+ exit
+int g1/0/24
+ no sh
+ sw mode trunk
+ switchport trunk allowed vlan 20,30
+int range g1/0/1-4
+ no sh
+ sw mode access
+ sw acc vlan 20
+int range g1/0/5-8
+ no sh
+ sw mode access
+ sw acc vlan 30
+int range g1/0/1-8
+ switchport nonegotiate
+end
+write mem</code></pre>
+                </div>
+
+                <h3>Difficultés rencontrées et solutions</h3>
+                <div class="difficulties">
+                    <div class="difficulty-item">
+                        <h4>Difficulté : Activation de l'interface physique parente avant les sous-interfaces</h4>
+                        <p><strong>Problème :</strong> Les sous-interfaces (G0/0.20, G0/0.30) ne passent pas en état UP si l'interface physique parente (G0/0) est en état administrativement down. Aucune communication inter-VLAN n'était possible.</p>
+                        <p><strong>Solution :</strong> Exécution de <code>no shutdown</code> sur G0/0 avant de configurer les sous-interfaces. L'interface physique doit être active pour que ses sous-interfaces soient opérationnelles.</p>
+                    </div>
+                    <div class="difficulty-item">
+                        <h4>Difficulté : Restriction des VLANs sur le trunk</h4>
+                        <p><strong>Problème :</strong> Par défaut, un port trunk Cisco autorise tous les VLANs (1 à 4094). Sans restriction explicite, des VLANs non désirés pourraient transiter sur le lien, ce qui représente un risque de sécurité.</p>
+                        <p><strong>Solution :</strong> Utilisation de <code>switchport trunk allowed vlan 20,30</code> pour limiter le trunk aux seuls VLANs nécessaires, conformément au principe de moindre privilège appliqué au réseau.</p>
+                    </div>
+                    <div class="difficulty-item">
+                        <h4>Difficulté : Conflit d'adresse DHCP sur les passerelles</h4>
+                        <p><strong>Problème :</strong> Sans exclusion explicite, le serveur DHCP du routeur peut attribuer les adresses de passerelle (<code>10.0.20.254</code> et <code>10.0.30.254</code>) à des postes clients, provoquant un conflit d'adresse et une perte de connectivité.</p>
+                        <p><strong>Solution :</strong> Déclaration des commandes <code>ip dhcp excluded-address</code> pour les deux adresses de passerelle avant la création des pools DHCP.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bilan -->
+            <div class="content-card">
+                <h2>Bilan</h2>
+                <p class="text-block">
+                    Le projet remplit l'ensemble des objectifs fixés : les deux VLANs sont opérationnels
+                    et isolés au niveau du switch, les machines reçoivent automatiquement leur adresse
+                    IP via DHCP, le routage inter-VLAN fonctionne via les sous-interfaces du Cisco 1921,
+                    et les postes des deux VLANs accèdent à Internet grâce au NAT Overload.
+                </p>
+                <p class="text-block">
+                    Ce projet m'a permis de maîtriser concrètement les mécanismes fondamentaux du
+                    réseau d'entreprise : segmentation par VLAN, encapsulation 802.1Q, architecture
+                    Router-on-a-Stick, DHCP embarqué et NAT/PAT sur IOS Cisco. L'ensemble de la
+                    configuration a été réalisé en ligne de commande, sans interface graphique,
+                    ce qui renforce la compréhension des protocoles sous-jacents.
+                </p>
+            </div>
+
+            <!-- Compétences du référentiel -->
+            <div class="content-card">
+                <h2>Compétences du Référentiel BTS SIO SISR</h2>
+                <div class="competences-grid">
+
+                    <div class="competence-card">
+                        <h4>📋 B1.4 — Travail en mode projet</h4>
+                        <p style="color: var(--text-light)">Découpage du projet en deux phases (switch puis routeur), avec identification des dépendances (le trunk doit être configuré avant de valider le routage).</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🌐 B2.1 — Concevoir une infrastructure réseau</h4>
+                        <p style="color: var(--text-light)">Conception du plan d'adressage (deux sous-réseaux <code>/24</code>), choix de l'architecture Router-on-a-Stick, dimensionnement des plages DHCP et définition du lien trunk.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>⚙️ B2.2 — Déployer une infrastructure réseau</h4>
+                        <p style="color: var(--text-light)">Configuration complète en CLI Cisco IOS des équipements Cisco 1921 (sous-interfaces, DHCP, NAT) et Cisco 2960S (VLANs, trunk, ports accès).</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🔒 B2.4 — Participer à la gestion de la cybersécurité</h4>
+                        <p style="color: var(--text-light)">Isolation du trafic par VLAN, restriction du trunk aux seuls VLANs nécessaires, désactivation du DTP (<code>nonegotiate</code>) pour prévenir les attaques de type VLAN hopping.</p>
+                    </div>
+
+                    <div class="competence-card">
+                        <h4>🖥️ B2.3 — Exploiter une infrastructure réseau</h4>
+                        <p style="color: var(--text-light)">Validation de la configuration par des tests de connectivité (<code>ping</code>, <code>show ip dhcp binding</code>, <code>show ip nat translations</code>) et analyse des résultats.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Perspectives -->
+            <div class="content-card">
+                <h2>Perspectives et Améliorations</h2>
+
+                <h3>Filtrage inter-VLAN avec des ACLs étendues</h3>
+                <p class="text-block">
+                    L'architecture actuelle permet une communication libre entre les deux VLANs via
+                    le routeur. Une évolution naturelle consiste à appliquer des <strong>ACLs étendues</strong>
+                    sur les sous-interfaces pour contrôler finement quels flux sont autorisés entre
+                    VLAN 20 et VLAN 30 (par exemple, autoriser uniquement certains ports ou bloquer
+                    totalement la communication inter-VLAN si les deux groupes doivent rester isolés).
+                </p>
+
+                <h3>Autres évolutions possibles</h3>
+                <ul>
+                    <li><strong>ACLs dès le départ :</strong> Mettre en place le filtrage inter-VLAN dès la conception plutôt qu'en évolution, pour que la segmentation soit effective en termes de sécurité et pas seulement logique.</li>
+                    <li><strong>VLAN de gestion dédié :</strong> Créer un VLAN dédié à l'administration des équipements (VLAN natif et accès SSH/Telnet restreint) pour séparer le trafic de gestion du trafic utilisateur.</li>
+                    <li><strong>Documentation du plan d'adressage :</strong> Formaliser un tableau de plan d'adressage complet (réseau, masque, passerelle, plage DHCP) avant de commencer la configuration, pour faciliter le dépannage.</li>
+                </ul>
+            </div>
 
             <!-- Navigation -->
             <div class="project-navigation">
